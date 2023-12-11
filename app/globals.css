@@ -79,6 +79,6 @@
     @apply border-border;
   }
   body {
-    @apply  bg-zinc-900 h-full overflow-x-hidden;
+    @apply  bg-black h-full overflow-x-hidden;
   }
 }
