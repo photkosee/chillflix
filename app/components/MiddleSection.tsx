@@ -1,16 +1,31 @@
+"use client";
+
+import { useState } from "react";
+
+import { ChevronRight } from "lucide-react";
+
+import Questions from "./Questions";
 import Separator from "./Separator";
+import Input from "@/components/Input";
+import { Button } from "@/components/ui/button";
 
 const MiddleSection = () => {
+  const [email, setEmail] = useState<string>("");
+
   return (
     <>
       <Separator />
 
       <div className="
         flex flex-col lg:flex-row gap-7 lg:gap-5 lg:justify-between
-        xl:justify-around px-5 py-16 items-center
+        xl:justify-around px-5 py-16 items-center bg-black
         "
       >
-        <div className="flex flex-col gap-7 justify-center items-center lg:justify-start max-w-xl">
+        <div className="
+          flex flex-col gap-7 justify-center items-center
+          lg:justify-start lg:items-start max-w-xl
+          "
+        >
           <div className="h1 text-white text-center lg:text-start">
             Enjoy on your TV
           </div>
@@ -31,10 +46,14 @@ const MiddleSection = () => {
 
       <div className="
         flex flex-col lg:flex-row-reverse gap-7 lg:gap-5 lg:justify-between
-        xl:justify-around px-5 py-16 items-center
+        xl:justify-around px-5 py-16 items-center bg-black
         "
       >
-        <div className="flex flex-col gap-7 justify-center items-center lg:justify-start max-w-xl">
+        <div className="
+          flex flex-col gap-7 justify-center items-center
+          lg:justify-start lg:items-start max-w-xl
+          "
+        >
           <div className="h1 text-white text-center lg:text-start">
             Download your shows to watch offline
           </div>
@@ -52,9 +71,9 @@ const MiddleSection = () => {
             flex justify-between gap-2
             "
           >
-            <div className="flex gap-2">
+            <div className="flex gap-3">
               <img src="/images/boxshot.png" alt="boxshot" />
-              <div className="flex flex-col items-center justify-center">
+              <div className="flex flex-col items-start justify-center">
                 <div className="text-white font-bold">
                   Strager Things
                 </div>
@@ -70,8 +89,16 @@ const MiddleSection = () => {
 
       <Separator />
 
-      <div className="p-20">
-        <div className="flex flex-col gap-7 justify-center items-center lg:justify-start lg:items-start max-w-xl">
+      <div className="
+        py-20 px-5 md:px-28 bg-black w-full flex justify-center items-center
+        lg:justify-start
+        "
+      >
+        <div className="
+          w-full flex flex-col gap-7 justify-center items-center
+          lg:justify-start lg:items-start max-w-xl
+          "
+        >
           <div className="h1 text-white text-center lg:text-start">
             Watch everywhere
           </div>
@@ -85,10 +112,14 @@ const MiddleSection = () => {
 
       <div className="
         flex flex-col lg:flex-row-reverse gap-7 lg:gap-5 lg:justify-between
-        xl:justify-around px-5 py-16 items-center
+        xl:justify-around px-5 py-16 items-center bg-black
         "
       >
-        <div className="flex flex-col gap-7 justify-center items-center lg:justify-start max-w-xl">
+        <div className="
+          flex flex-col gap-7 justify-center items-center
+          lg:justify-start lg:items-start max-w-xl
+          "
+        >
           <div className="h1 text-white text-center lg:text-start">
             Create profiles for kids
           </div>
@@ -104,9 +135,36 @@ const MiddleSection = () => {
 
       <Separator />
 
-      <div className="px-5 py-16 flex flex-col gap-2">
+      <div className="w-full px-5 py-16 flex flex-col items-center gap-12 bg-black">
         <div className="h1 text-white text-center">
           Frequently Asked Questions
+        </div>
+
+        <div className="w-full max-w-3xl flex justify-center">
+          <Questions />
+        </div>
+
+        <div className="
+          w-full my-auto flex flex-col justify-center items-center
+          gap-5 px-2
+          "
+        >
+          <div className="text-white p text-center">
+            Ready to watch? Enter your email to create or restart your membership.
+          </div>
+
+          <div className="flex flex-col md:flex-row items-center gap-2">
+            <Input
+              id="email"
+              label="Email address"
+              onChange={(e) => setEmail(e.target.value)}
+              value={email}
+            />
+            <Button className="px-5 h-12 text-lg font-bold">
+              Get Started
+              <ChevronRight />
+            </Button>
+          </div>
         </div>
       </div>
     </>

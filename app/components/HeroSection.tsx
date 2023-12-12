@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { useState } from "react";
 
+import { ChevronRight } from "lucide-react";
+
 import Input from "@/components/Input";
 import { Button } from "@/components/ui/button";
 
@@ -20,7 +22,7 @@ const HeroSection = () => {
         min-h-[500px] h-screen flex flex-col
         "
       >
-        <nav className="px-10 py-5 flex justify-between">
+        <nav className="w-full max-w-5xl mx-auto px-2 sm:px-10 py-5 flex justify-between">
           <Link href="/" passHref>
             <button className="uppercase text-2xl font-bold text-primary">
               chillflix
@@ -56,8 +58,9 @@ const HeroSection = () => {
               onChange={(e) => setEmail(e.target.value)}
               value={email}
             />
-            <Button>
+            <Button className="px-5 h-12 text-lg font-bold">
               Get Started
+              <ChevronRight />
             </Button>
           </div>
         </div>
