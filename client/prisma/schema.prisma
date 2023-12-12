@@ -10,20 +10,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id String @id @default(auto()) @map("_id") @db.ObjectId
-  name String
-  image String?
-  email String? @unique
-  emailVerified DateTime?
-  hashedPassword String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  favoriteIds String[] @db.ObjectId
-  sessions Session[]
-  accounts Account[]
-}
-
 model Account {
   id String @id @default(auto()) @map("_id") @db.ObjectId
   userId String @db.ObjectId
@@ -31,7 +17,7 @@ model Account {
   provider String
   providerAccountId String
   refresh_token String? @db.String
-  access_token String?
+  access_token String? @db.String
   expires_at Int?
   token_type String?
   scope String?
@@ -45,11 +31,25 @@ model Account {
 
 model Session {
   id String @id @default(auto()) @map("_id") @db.ObjectId
-  sesstionId String @unique
+  sessionToken String @unique
   userId String @db.ObjectId
-  expires DateTime
+  expires DateTime @db.Date
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model User {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  name String
+  image String?
+  email String? @unique
+  emailVerified DateTime?
+  hashedPassword String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  favoriteIds String[] @db.ObjectId
+  sessions Session[]
+  accounts Account[]
 }
 
 model VerificationToken {
