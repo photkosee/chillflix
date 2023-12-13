@@ -10,32 +10,35 @@ const Page = () => {
   const [password, setPassword] = useState<string>("");
 
   return (
-    <div className="
-      w-full min-h-screen relative bg-black lg:bg-[url('/images/hero-cover.jpg')]
-      bg-no-repeat bg-center bg-fixed bg-cover
+    <div
+      className="
+      relative min-h-screen w-full bg-black bg-cover
+      bg-fixed bg-center bg-no-repeat lg:bg-[url('/images/hero-cover.jpg')]
       "
     >
-      <div className="
-        lg:bg-gradient-to-t from-black via-transparent to-black bg-opacity-40
-        min-h-[500px] h-screen flex flex-col
+      <div
+        className="
+        flex h-screen min-h-[500px] flex-col bg-opacity-40
+        from-black via-transparent to-black lg:bg-gradient-to-t
         "
       >
         <nav>
           <Link href="/" passHref>
-            <button className="uppercase text-primary text-2xl md:text-4xl font-bold p-4">
+            <button className="p-4 text-2xl font-bold uppercase text-primary md:text-4xl">
               chillflix
             </button>
           </Link>
         </nav>
 
-        <div className="bg-black/90 p-16 m-auto rounded-xl px-5">
-          <div className="
-            max-w-lg h-full mx-auto flex flex-col gap-10
-            justify-center items-center
+        <div className="m-auto rounded-xl bg-black/90 p-16 px-5">
+          <div
+            className="
+            mx-auto flex h-full max-w-lg flex-col items-center
+            justify-center gap-10
             "
           >
-            <form className="w-full flex flex-col justify-start gap-5 p-7">
-              <div className="text-white text-xl md:text-3xl font-semibold">
+            <form className="flex w-full flex-col justify-start gap-5 p-7">
+              <div className="text-xl font-semibold text-white md:text-3xl">
                 Sign In
               </div>
 
@@ -57,16 +60,14 @@ const Page = () => {
                 />
               </div>
 
-              <button className="bg-primary text-white py-2 rounded-sm">
+              <button className="rounded-sm bg-primary py-2 text-white">
                 Sign In
               </button>
             </form>
 
-            <div className="w-full flex flex-col gap-3 justify-start px-7">
+            <div className="flex w-full flex-col justify-start gap-3 px-7">
               <div className="flex gap-1">
-                <div className="text-gray-400/60">
-                  New to Chillflix?
-                </div>
+                <div className="text-gray-400/60">New to Chillflix?</div>
                 <a className="text-white hover:underline" href="/register">
                   Sign up now.
                 </a>

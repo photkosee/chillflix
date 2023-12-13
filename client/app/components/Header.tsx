@@ -2,14 +2,10 @@ import { Button } from "../../components/ui/button";
 
 const Header = () => {
   return (
-    <header className="w-full flex justify-between items-center p-5 bg-transparent">
-      <div className="uppercase text-2xl font-bold text-primary">
-        chillflix
-      </div>
+    <header className="flex w-full items-center justify-between bg-transparent p-5">
+      <div className="text-2xl font-bold uppercase text-primary">chillflix</div>
 
-      <Button className="h-9">
-        Sign In
-      </Button>
+      <Button className="h-9">Sign In</Button>
     </header>
   );
 };
