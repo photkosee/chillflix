@@ -1,16 +1,10 @@
-"use client";
-
 import Link from "next/link";
-import { useState } from "react";
 
 import { ChevronRight } from "lucide-react";
 
-import Input from "@/components/Input";
 import { Button } from "@/components/ui/button";
 
 const HeroSection = () => {
-  const [email, setEmail] = useState<string>("");
-
   return (
     <div
       className="
@@ -54,16 +48,12 @@ const HeroSection = () => {
           </div>
 
           <div className="flex flex-col items-center gap-2 md:flex-row">
-            <Input
-              id="email"
-              label="Email address"
-              onChange={(e) => setEmail(e.target.value)}
-              value={email}
-            />
-            <Button className="h-12 px-5 text-lg font-bold">
-              Get Started
-              <ChevronRight />
-            </Button>
+            <Link href="/signup" passHref>
+              <Button className="h-12 px-5 text-lg font-bold">
+                Register
+                <ChevronRight />
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

@@ -1,4 +1,8 @@
-interface InputProps {
+import * as React from "react";
+
+import { cn } from "@/lib/utils";
+
+interface InputProps extends React.HTMLAttributes<HTMLDivElement> {
   id: string;
   onChange: (e: any) => void;
   value: string;
@@ -6,14 +10,14 @@ interface InputProps {
   type?: string;
 }
 
-const Input: React.FC<InputProps> = ({ id, onChange, value, label, type }) => {
+const Input: React.FC<InputProps> = ({ className, id, onChange, value, label, type }) => {
   return (
     <div className="relative w-full">
       <input
-        className="
-        text-md focus:bg-neutral-900/85 peer block w-full appearance-none rounded-sm bg-neutral-900/90 px-6
-        pb-1 pt-6 text-white focus:outline-none focus:ring-0
-        "
+        className={cn(
+          "text-md focus:bg-neutral-900/85 peer block w-full appearance-none rounded-sm bg-neutral-900/90 px-6 pb-1 pt-6 text-white focus:outline-none focus:ring-0",
+          className
+        )}
         id={id}
         type={type ? type : "text"}
         value={value}

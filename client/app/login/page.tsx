@@ -24,13 +24,13 @@ const Page = () => {
       >
         <nav>
           <Link href="/" passHref>
-            <button className="p-4 text-2xl font-bold uppercase text-primary md:text-4xl">
+            <button className="px-4 pt-4 text-2xl font-bold uppercase text-primary md:text-4xl">
               chillflix
             </button>
           </Link>
         </nav>
 
-        <div className="m-auto rounded-xl bg-black/90 p-16 px-5">
+        <div className="m-auto rounded-xl bg-black/90 px-5 py-7">
           <div
             className="
             mx-auto flex h-full max-w-lg flex-col items-center
@@ -68,9 +68,9 @@ const Page = () => {
             <div className="flex w-full flex-col justify-start gap-3 px-7">
               <div className="flex gap-1">
                 <div className="text-gray-400/60">New to Chillflix?</div>
-                <a className="text-white hover:underline" href="/register">
+                <Link href="/signup" className="text-white hover:underline">
                   Sign up now.
-                </a>
+                </Link>
               </div>
 
               <div className="flex flex-col">

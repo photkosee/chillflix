@@ -1,17 +1,12 @@
-"use client";
-
-import { useState } from "react";
+import Link from "next/link";
 
 import { ChevronRight } from "lucide-react";
 
 import Questions from "./Questions";
 import Separator from "./Separator";
-import Input from "@/components/Input";
 import { Button } from "@/components/ui/button";
 
 const MiddleSection = () => {
-  const [email, setEmail] = useState<string>("");
-
   return (
     <>
       <Separator />
@@ -165,21 +160,16 @@ const MiddleSection = () => {
           "
         >
           <div className="p text-center text-white">
-            Ready to watch? Enter your email to create or restart your
-            membership.
+            Ready to watch? Create your membership.
           </div>
 
           <div className="flex flex-col items-center gap-2 md:flex-row">
-            <Input
-              id="email"
-              label="Email address"
-              onChange={(e) => setEmail(e.target.value)}
-              value={email}
-            />
-            <Button className="h-12 px-5 text-lg font-bold">
-              Get Started
-              <ChevronRight />
-            </Button>
+            <Link href="/signup" passHref>
+              <Button className="h-12 px-5 text-lg font-bold">
+                Register
+                <ChevronRight />
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
