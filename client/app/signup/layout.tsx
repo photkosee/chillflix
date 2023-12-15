@@ -9,7 +9,7 @@ export default function RootLayout({
   return (
     <>
       <Header />
-      <main className="min-h-[91vh] w-full bg-white">{children}</main>
+      <main className="min-h-[91vh] w-screen bg-white">{children}</main>
       <Footer />
     </>
   );

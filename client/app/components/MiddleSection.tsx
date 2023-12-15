@@ -33,9 +33,9 @@ const MiddleSection = () => {
         </div>
 
         <div className="relative">
-          <img src="/images/tv.png" alt="tv" />
+          <img src="/images/tv.png" alt="tv" className="relative z-20 pt-3"/>
           <video
-            className="absolute inset-0 -z-10 m-auto"
+            className="object-contain absolute z-10 inset-0 m-auto"
             autoPlay
             playsInline
             muted

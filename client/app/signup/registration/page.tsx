@@ -19,12 +19,7 @@ const Page = () => {
           </div>
         </div>
 
-        <div
-          className="
-          flex w-full max-w-[250px] flex-wrap items-center justify-center text-lg
-          text-black sm:max-w-none md:text-center
-          "
-        >
+        <div className="flex flex-wrap text-lg text-black">
           Chillflix is personalized for you. Create a password to start watching
           Chillflix.
         </div>

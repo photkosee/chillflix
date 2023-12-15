@@ -1,18 +1,64 @@
 "use client";
 
-import { useState } from "react";
-import Link from "next/link";
+import { useEffect, useState } from "react";
 
-import { Checkbox, Input } from "@nextui-org/react";
+import { Checkbox } from "@nextui-org/react";
 import { XCircle } from "lucide-react";
+
+import Input from "@/components/Input";
 
 const Page = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [isDisabled, setIsDisabled] = useState<boolean>(true);
+  const [emailError, setEmailError] = useState<string>("");
+  const [passwordError, setPasswordError] = useState<string>("");
+
+  useEffect(() => {
+    if (email && password) {
+      setIsDisabled(false);
+    }
+  }, []);
+
+  const handleOnChangeEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const currEmail = e.target.value;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    setEmail(currEmail);
+    console.log(currEmail)
+    if (!currEmail) {
+      setEmailError("Email is required.");
+      setIsDisabled(true);
+    } else if (currEmail.length < 5 || currEmail.length > 50) {
+      setEmailError("Email should be between 5 and 50 characters.");
+      setIsDisabled(true);
+    } else if (!emailRegex.test(currEmail)) {
+      setEmailError("Please enter a valid email address.");
+      setIsDisabled(true);
+    } else {
+      setEmailError("");
+    }
+  }
+
+  const handleOnChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const currPassword = e.target.value;
+    setPassword(currPassword);
+
+    if (!currPassword) {
+      setPasswordError("Password is required.");
+      setIsDisabled(true);
+    } else if (currPassword.length < 6 || currPassword.length > 60) {
+      setPasswordError("Password should be between 6 and 60 characters.");
+      setIsDisabled(true);
+    } else {
+      setPasswordError("");
+      console.log("hit");
+    }
+  };
 
   return (
     <div className="mx-auto flex h-full max-w-[500px] items-center justify-center p-5">
-      <div className="flex min-h-[70vh] flex-col items-start justify-center gap-5">
+      <form className="flex min-h-[70vh] flex-col items-start justify-center gap-5">
         <div className="flex flex-col">
           <div className="text-xs uppercase text-black">step 2 of 3</div>
           <div className="text-2xl font-semibold text-black sm:text-3xl">
@@ -20,12 +66,7 @@ const Page = () => {
           </div>
         </div>
 
-        <div
-          className="
-          flex w-full max-w-[250px] flex-wrap items-center justify-center text-lg
-          text-black sm:max-w-none
-          "
-        >
+        <div className="flex flex-wrap text-lg text-black">
           Just a few more steps and you&apos;re done! We hate paperwork, too.
         </div>
 
@@ -33,43 +74,53 @@ const Page = () => {
           <Input
             id="email"
             label="Email"
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => handleOnChangeEmail(e)}
             value={email}
             type="email"
           />
-          <div className="flex gap-1 text-primary items-center text-xs">
+          <div
+            className={`${
+              emailError ? "flex" : "hidden"
+            } items-center gap-1 text-xs text-primary`}
+          >
             <XCircle size={20} />
-            Email is required.
-            Email should be between 5 and 50 characters.
-            Please enter a valid email address.
+            {emailError}
           </div>
 
           <Input
             id="password"
             label="Password"
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => handleOnChangePassword(e)}
             value={password}
             type="password"
           />
-          <div className="flex gap-1 text-primary items-center text-xs">
+          <div
+            className={`${
+              passwordError ? "flex" : "hidden"
+            } items-center gap-1 text-xs text-primary`}
+          >
             <XCircle size={20} />
-            Password is required.
+            {passwordError}
           </div>
         </div>
 
         <Checkbox>
-          <div className="text-black">
+          <div className="text-sm text-black">
             Please do not email me Chillflix special offers.
           </div>
         </Checkbox>
 
-        <Link
-          href="/signup/regform"
-          className="w-full rounded-sm bg-primary py-4 text-center text-xl text-white hover:bg-primary/90"
+        <button
+          className="w-full rounded-sm bg-primary py-4
+          text-center text-xl text-white hover:bg-primary/90
+          "
+          type="submit"
+          onSubmit={() => {}}
+          disabled={isDisabled}
         >
           Next
-        </Link>
-      </div>
+        </button>
+      </form>
     </div>
   );
 };

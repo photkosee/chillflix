@@ -19,36 +19,21 @@ const Page = () => {
         <div className="flex flex-col gap-3">
           <div className="flex items-center gap-2">
             <Check className="text-primary" />
-            <div
-              className="
-              flex max-w-[250px] flex-wrap text-lg
-              text-black sm:max-w-none
-              "
-            >
+            <div className="flex flex-wrap text-lg text-black">
               No commitments, cancel anytime.
             </div>
           </div>
 
           <div className="flex items-center gap-2">
             <Check className="text-primary" />
-            <div
-              className="
-              flex max-w-[250px] flex-wrap text-lg
-              text-black sm:max-w-none
-              "
-            >
+            <div className="flex flex-wrap text-lg text-black">
               Everything on Netflix for one low price.
             </div>
           </div>
 
           <div className="flex items-center gap-2">
             <Check className="text-primary" />
-            <div
-              className="
-              flex max-w-[250px] flex-wrap text-lg
-              text-black sm:max-w-none
-              "
-            >
+            <div className="flex flex-wrap text-lg text-black">
               No ads and no extra fees. Ever.
             </div>
           </div>

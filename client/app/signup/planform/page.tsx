@@ -16,36 +16,21 @@ const Page = () => {
         <div className="flex flex-col gap-3">
           <div className="flex items-center gap-2">
             <Check className="text-primary" />
-            <div
-              className="
-              flex max-w-[250px] flex-wrap text-lg
-              text-black sm:max-w-none
-              "
-            >
+            <div className="flex flex-wrap text-lg text-black">
               Watch all you want. Ad-free.
             </div>
           </div>
 
           <div className="flex items-center gap-2">
             <Check className="text-primary" />
-            <div
-              className="
-              flex max-w-[250px] flex-wrap text-lg
-              text-black sm:max-w-none
-              "
-            >
+            <div className="flex flex-wrap text-lg text-black">
               Recommendations just for you.
             </div>
           </div>
 
           <div className="flex items-center gap-2">
             <Check className="text-primary" />
-            <div
-              className="
-              flex max-w-[250px] flex-wrap text-lg
-              text-black sm:max-w-none
-              "
-            >
+            <div className="flex flex-wrap text-lg text-black">
               Change or cancel your plan anytime.
             </div>
           </div>
