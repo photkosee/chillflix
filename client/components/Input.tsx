@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 interface InputProps extends React.HTMLAttributes<HTMLDivElement> {
   id: string;
   onChange: (e: any) => void;
-  value: string;
+  value?: string;
   label: string;
   type?: string;
 }
@@ -27,8 +27,8 @@ const Input: React.FC<InputProps> = ({
         )}
         id={id}
         type={type ? type : "text"}
-        value={value}
-        placeholder=""
+        placeholder=" "
+        {...(value && { value })}
         onChange={onChange}
       />
 
@@ -37,7 +37,7 @@ const Input: React.FC<InputProps> = ({
         text-md absolute left-6 top-4 z-10 origin-[0] -translate-y-3
         scale-75 transform cursor-text text-black duration-100
         peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-3
-        peer-focus:scale-75 peer-focus:font-bold
+        peer-focus:scale-75
         "
         htmlFor={id}
       >

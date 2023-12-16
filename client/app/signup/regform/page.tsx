@@ -1,64 +1,46 @@
 "use client";
 
-import { useEffect, useState } from "react";
-
 import { Checkbox } from "@nextui-org/react";
 import { XCircle } from "lucide-react";
+import { z } from "zod";
+import { useForm, SubmitHandler } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 
-import Input from "@/components/Input";
+export const SignUpSchema = z.object({
+  email: z
+    .string()
+    .trim()
+    .min(1, "Email is required.")
+    .min(5, "Email should be between 5 and 50 characters.")
+    .email("Please enter a valid email address.")
+    .max(50, "Email should be between 5 and 50 characters."),
+  password: z
+    .string()
+    .trim()
+    .min(1, "Password is required.")
+    .min(6, "Password should be between 6 and 60 characters.")
+    .max(60, "Password should be between 6 and 60 characters."),
+});
+
+export type SignUpSchemaType = z.infer<typeof SignUpSchema>;
 
 const Page = () => {
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
-  const [isDisabled, setIsDisabled] = useState<boolean>(true);
-  const [emailError, setEmailError] = useState<string>("");
-  const [passwordError, setPasswordError] = useState<string>("");
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<SignUpSchemaType>({ resolver: zodResolver(SignUpSchema) });
 
-  useEffect(() => {
-    if (email && password) {
-      setIsDisabled(false);
-    }
-  }, []);
-
-  const handleOnChangeEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const currEmail = e.target.value;
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    setEmail(currEmail);
-    console.log(currEmail)
-    if (!currEmail) {
-      setEmailError("Email is required.");
-      setIsDisabled(true);
-    } else if (currEmail.length < 5 || currEmail.length > 50) {
-      setEmailError("Email should be between 5 and 50 characters.");
-      setIsDisabled(true);
-    } else if (!emailRegex.test(currEmail)) {
-      setEmailError("Please enter a valid email address.");
-      setIsDisabled(true);
-    } else {
-      setEmailError("");
-    }
-  }
-
-  const handleOnChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const currPassword = e.target.value;
-    setPassword(currPassword);
-
-    if (!currPassword) {
-      setPasswordError("Password is required.");
-      setIsDisabled(true);
-    } else if (currPassword.length < 6 || currPassword.length > 60) {
-      setPasswordError("Password should be between 6 and 60 characters.");
-      setIsDisabled(true);
-    } else {
-      setPasswordError("");
-      console.log("hit");
-    }
+  const onSubmit: SubmitHandler<SignUpSchemaType> = (data) => {
+    console.log(data.email, data.password);
   };
 
   return (
     <div className="mx-auto flex h-full max-w-[500px] items-center justify-center p-5">
-      <form className="flex min-h-[70vh] flex-col items-start justify-center gap-5">
+      <form
+        className="flex min-h-[70vh] flex-col items-start justify-center gap-5"
+        onSubmit={handleSubmit(onSubmit)}
+      >
         <div className="flex flex-col">
           <div className="text-xs uppercase text-black">step 2 of 3</div>
           <div className="text-2xl font-semibold text-black sm:text-3xl">
@@ -71,37 +53,64 @@ const Page = () => {
         </div>
 
         <div className="flex w-full flex-col gap-2">
-          <Input
-            id="email"
-            label="Email"
-            onChange={(e) => handleOnChangeEmail(e)}
-            value={email}
-            type="email"
-          />
-          <div
-            className={`${
-              emailError ? "flex" : "hidden"
-            } items-center gap-1 text-xs text-primary`}
-          >
-            <XCircle size={20} />
-            {emailError}
-          </div>
+          <div className="relative w-full">
+            <input
+              className="text-md peer block w-full appearance-none rounded-sm border border-black
+              bg-white px-6 pb-1 pt-6 text-black focus:outline-none
+              "
+              id="email"
+              {...register("email")}
+              placeholder=""
+            />
 
-          <Input
-            id="password"
-            label="Password"
-            onChange={(e) => handleOnChangePassword(e)}
-            value={password}
-            type="password"
-          />
-          <div
-            className={`${
-              passwordError ? "flex" : "hidden"
-            } items-center gap-1 text-xs text-primary`}
-          >
-            <XCircle size={20} />
-            {passwordError}
+            <label
+              className="
+              text-md absolute left-6 top-4 z-10 origin-[0] -translate-y-3
+              scale-75 transform cursor-text text-black duration-100
+              peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100
+              peer-focus:-translate-y-3 peer-focus:scale-75
+              "
+              htmlFor="email"
+            >
+              Email
+            </label>
           </div>
+          {errors.email && (
+            <div className="flex items-center gap-1 text-xs text-primary">
+              <XCircle size={17} />
+              {errors.email.message}
+            </div>
+          )}
+
+          <div className="relative w-full">
+            <input
+              className="text-md peer block w-full appearance-none rounded-sm border border-black
+              bg-white px-6 pb-1 pt-6 text-black focus:outline-none
+              "
+              id="password"
+              {...register("password")}
+              type="password"
+              placeholder=""
+            />
+
+            <label
+              className="
+              text-md absolute left-6 top-4 z-10 origin-[0] -translate-y-3
+              scale-75 transform cursor-text text-black duration-100
+              peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100
+              peer-focus:-translate-y-3 peer-focus:scale-75
+              "
+              htmlFor="password"
+            >
+              Password
+            </label>
+          </div>
+          {errors.password && (
+            <div className="flex items-center gap-1 text-xs text-primary">
+              <XCircle size={17} />
+              {errors.password.message}
+            </div>
+          )}
         </div>
 
         <Checkbox>
@@ -115,8 +124,6 @@ const Page = () => {
           text-center text-xl text-white hover:bg-primary/90
           "
           type="submit"
-          onSubmit={() => {}}
-          disabled={isDisabled}
         >
           Next
         </button>

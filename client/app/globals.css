@@ -9,6 +9,20 @@
 .p {
   @apply text-lg md:text-2xl font-normal
 }
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: black;
+  -webkit-box-shadow: 0 0 0px 1000px white inset;
+  color: white;
+}
  
 @layer base {
   :root {
@@ -44,6 +58,8 @@
   }
  
   .dark {
+    --warning: 31.5 97.8% 47.3%;
+
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
  
