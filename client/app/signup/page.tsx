@@ -27,7 +27,7 @@ const Page = () => {
           <div className="flex items-center gap-2">
             <Check className="text-primary" />
             <div className="flex flex-wrap text-lg text-black">
-              Everything on Netflix for one low price.
+              Everything on Chillflix for one low price.
             </div>
           </div>
 

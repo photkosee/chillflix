@@ -5,6 +5,9 @@ import { XCircle } from "lucide-react";
 import { z } from "zod";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { toast } from "react-toastify";
+
+import axiosInstance from "@/app/axios";
 
 export const SignUpSchema = z.object({
   email: z
@@ -31,8 +34,19 @@ const Page = () => {
     formState: { errors },
   } = useForm<SignUpSchemaType>({ resolver: zodResolver(SignUpSchema) });
 
-  const onSubmit: SubmitHandler<SignUpSchemaType> = (data) => {
+  const onSubmit: SubmitHandler<SignUpSchemaType> = async (data) => {
     console.log(data.email, data.password);
+    const url = `/api/auth/register`;
+    toast.promise(axiosInstance.post(url, {
+      email: data.email,
+      password: data.password,
+    }), {
+      pending: "Registering...",
+    }).then((res) => {
+      toast.success("Registration successful!" + res.data);
+    }).catch((err) => {
+      toast.error(err);
+    })
   };
 
   return (

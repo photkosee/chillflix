@@ -66,11 +66,9 @@ const Page = () => {
         from-black via-transparent to-black lg:bg-gradient-to-t
         "
       >
-        <nav>
+        <nav className="p-5">
           <Link href="/" passHref>
-            <button className="px-4 pt-4 text-2xl font-bold uppercase text-primary md:text-4xl">
-              chillflix
-            </button>
+            <img src="/images/logo.png" alt="ChillFlix logo" className="w-[120px]" />
           </Link>
         </nav>
 

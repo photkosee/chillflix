@@ -8,8 +8,8 @@ const Header = () => {
       border-b border-gray-200 bg-white px-7 py-5
       "
     >
-      <Link href="/" className="h1 uppercase text-primary">
-        Chillflix
+      <Link href="/" className="">
+        <img src="/images/logo.png" alt="ChillFlix logo" className="w-[120px]" />
       </Link>
       <Link
         href="/login"

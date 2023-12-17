@@ -51,7 +51,7 @@ const Questions = () => {
           aria-label="How do I cancel?"
           title="How do I cancel?"
         >
-          Netflix is flexible. There are no pesky contracts and no commitments.
+          Chillflix is flexible. There are no pesky contracts and no commitments.
           You can easily cancel your account online in two clicks. There are no
           cancellation fees - start or stop your account anytime.
         </AccordionItem>

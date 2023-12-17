@@ -20,9 +20,7 @@ const HeroSection = () => {
       >
         <nav className="mx-auto flex w-full max-w-5xl justify-between px-2 py-5 sm:px-10">
           <Link href="/" passHref>
-            <button className="text-2xl font-bold uppercase text-primary">
-              chillflix
-            </button>
+            <img src="/images/logo.png" alt="ChillFlix logo" className="w-[120px]" />
           </Link>
 
           <Link href="/login" passHref>
