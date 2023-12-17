@@ -11,8 +11,8 @@
 }
 
 .planBox {
-  @apply relative mx-1 flex h-20 w-[calc(100%/4)] cursor-pointer items-center justify-center rounded-sm
-  bg-primary text-sm font-semibold text-white shadow after:absolute after:left-1/2 after:top-full after:block after:-translate-x-1/2
+  @apply relative mx-0.5 flex h-16 xs:h-20 w-[calc(100%/4)] cursor-pointer items-center justify-center rounded-sm
+  bg-primary text-[11px] xs:text-sm font-semibold text-white shadow after:absolute after:left-1/2 after:top-full after:block after:-translate-x-1/2
   after:border-8 after:border-b-0 after:border-transparent after:border-t-primary after:content-[""] md:mx-2 md:h-[95px] md:text-base;
 }
 

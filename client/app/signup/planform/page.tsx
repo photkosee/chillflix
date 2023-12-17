@@ -1,10 +1,28 @@
+"use client";
+
 import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
 
 import { Check } from "lucide-react";
 
 const Page = () => {
+  const [isSticky, setIsSticky] = useState<boolean>(false);
+  const stickyDivRef = useRef<HTMLDivElement>(null);
+
+  const handleScroll = () => {
+    stickyDivRef.current &&
+      setIsSticky(window.scrollY >= stickyDivRef.current.offsetTop);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <div className="flex h-full w-full items-center justify-center p-5">
+    <div className="flex h-full w-full items-center justify-center px-5 pb-24 pt-7 xs:px-10">
       <div className="flex min-h-[70vh] w-full max-w-5xl flex-col items-start justify-center gap-10">
         <div className="mx-auto flex w-full flex-col justify-start gap-5">
           <div className="flex flex-col">
@@ -39,11 +57,20 @@ const Page = () => {
         </div>
 
         <div className="flex w-full flex-col gap-4">
-          <div className="flex w-full items-center justify-end self-end md:w-[65%]">
-            <div className="planBox">Mobile</div>
-            <div className="planBox">Basic</div>
-            <div className="planBox">Standard</div>
-            <div className="planBox">Premium</div>
+          <div
+            className={`${
+              isSticky && "sticky top-0 bg-white"
+            } flex w-full justify-end`}
+          >
+            <div
+              className="flex w-full items-center justify-end self-end py-3 md:w-[65%]"
+              ref={stickyDivRef}
+            >
+              <div className="planBox">Mobile</div>
+              <div className="planBox">Basic</div>
+              <div className="planBox">Standard</div>
+              <div className="planBox">Premium</div>
+            </div>
           </div>
 
           <table className="text-black">
@@ -66,7 +93,7 @@ const Page = () => {
                   md:pb-0
                   "
                 >
-                  THB 99
+                  THB 169
                 </td>
                 <td
                   className="
@@ -74,7 +101,7 @@ const Page = () => {
                   md:pb-0
                   "
                 >
-                  THB 99
+                  THB 349
                 </td>
                 <td
                   className="
@@ -82,7 +109,7 @@ const Page = () => {
                   md:pb-0
                   "
                 >
-                  THB 99
+                  THB 419
                 </td>
               </tr>
 
@@ -491,6 +518,20 @@ const Page = () => {
               </tr>
             </tbody>
           </table>
+        </div>
+
+        <div className="flex w-full flex-col gap-2 text-xs text-gray-500">
+          <div>
+            HD (720p), Full HD (1080p), Ultra HD (4K) and HDR availability
+            subject to your internet service and device capabilities. Not all
+            content is available in all resolutions. But we don&apos;t have
+            Terms of Use for more details.
+          </div>
+          <div>
+            Only people who live with you may use your account. Watch on 4
+            different devices at the same time with Premium, 2 with Standard,
+            and 1 with Basic and Mobile.
+          </div>
         </div>
 
         <Link
