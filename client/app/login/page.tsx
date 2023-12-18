@@ -56,19 +56,23 @@ const Page = () => {
   return (
     <div
       className="
-      relative min-h-screen w-full bg-black bg-cover
-      bg-fixed bg-center bg-no-repeat lg:bg-[url('/images/hero-cover.jpg')]
+      relative h-screen min-h-[600px] w-full bg-black bg-cover bg-fixed
+      bg-center bg-no-repeat lg:bg-[url('/images/hero-cover.jpg')]
       "
     >
       <div
         className="
-        flex h-screen min-h-[500px] flex-col bg-opacity-40
-        from-black via-transparent to-black lg:bg-gradient-to-t
+        flex h-screen min-h-[600px] flex-col bg-opacity-40 from-black
+        via-transparent to-black pb-10 lg:bg-gradient-to-t
         "
       >
         <nav className="p-5">
           <Link href="/" passHref>
-            <img src="/images/logo.png" alt="ChillFlix logo" className="w-[120px]" />
+            <img
+              src="/images/logo.png"
+              alt="ChillFlix logo"
+              className="w-[120px]"
+            />
           </Link>
         </nav>
 
@@ -89,9 +93,9 @@ const Page = () => {
 
               <div className="flex flex-col gap-4">
                 {!hasEmail && (
-                  <div className="px-6 py-3 text-sm text-white bg-warning rounded-sm">
-                    Sorry, we can&apos;t find an account with this email address. Please
-                    try again or&nbsp;
+                  <div className="rounded-sm bg-warning px-6 py-3 text-sm text-white">
+                    Sorry, we can&apos;t find an account with this email
+                    address. Please try again or&nbsp;
                     <Link href="/signup" className="underline">
                       create a new account.
                     </Link>
@@ -99,7 +103,7 @@ const Page = () => {
                 )}
 
                 {isPasswordInvalid && (
-                  <div className="px-6 py-3 text-sm text-white bg-warning rounded-sm">
+                  <div className="rounded-sm bg-warning px-6 py-3 text-sm text-white">
                     Invalid password
                     <Link href="/signup" className="underline">
                       Don&apos;t remember your password?
@@ -108,10 +112,14 @@ const Page = () => {
                 )}
 
                 <div className="flex w-full flex-col gap-1">
-                  <div className={`relative w-full ${errors.email && "border-b-3 border-warning rounded-sm"}`}>
+                  <div
+                    className={`relative w-full ${
+                      errors.email && "rounded-sm border-b-3 border-warning"
+                    }`}
+                  >
                     <input
                       className="text-md bg-neutral peer block w-full appearance-none
-                      rounded-sm px-6 pb-1 pt-6 text-white focus:outline-none
+                      rounded-sm px-6 pb-1 pt-6 text-black focus:outline-none
                       "
                       id="email"
                       {...register("email")}
@@ -121,7 +129,7 @@ const Page = () => {
                     <label
                       className="
                       text-md absolute left-6 top-4 z-10 origin-[0] -translate-y-3
-                      scale-75 transform cursor-text text-gray-400 duration-100
+                      scale-75 transform cursor-text text-gray-900 duration-100
                       peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100
                       peer-focus:-translate-y-3 peer-focus:scale-75
                       "
@@ -138,10 +146,14 @@ const Page = () => {
                 </div>
 
                 <div className="flex w-full flex-col gap-1">
-                  <div className={`relative w-full ${errors.password && "border-b-3 border-warning rounded-sm"}`}>
+                  <div
+                    className={`relative w-full ${
+                      errors.password && "rounded-sm border-b-3 border-warning"
+                    }`}
+                  >
                     <input
                       className="text-md bg-neutral peer block w-full appearance-none
-                        rounded-sm px-6 pb-1 pt-6 text-white focus:outline-none
+                        rounded-sm px-6 pb-1 pt-6 text-black focus:outline-none
                         "
                       id="password"
                       {...register("password")}
@@ -152,7 +164,7 @@ const Page = () => {
                     <label
                       className="
                         text-md absolute left-6 top-4 z-10 origin-[0] -translate-y-3
-                        scale-75 transform cursor-text text-gray-400 duration-100
+                        scale-75 transform cursor-text text-gray-900 duration-100
                         peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100
                         peer-focus:-translate-y-3 peer-focus:scale-75
                         "
@@ -208,9 +220,10 @@ const Page = () => {
                   Sign up now.
                 </Link>
               </div>
-              
+
               <div className="text-gray-400/80">
-                This page doesn&apos;t need to ensure you&apos;re not a bot.&nbsp;
+                This page doesn&apos;t need to ensure you&apos;re not a
+                bot.&nbsp;
                 <Link href="/" className="text-blue-500 hover:underline">
                   Learn more.
                 </Link>

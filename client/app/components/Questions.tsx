@@ -5,8 +5,9 @@ import { Accordion, AccordionItem } from "@nextui-org/accordion";
 const Questions = () => {
   return (
     <>
-      <Accordion variant="splitted">
+      <Accordion variant="splitted" className="dark">
         <AccordionItem
+          className="text-white"
           key="1"
           aria-label="What is Chillflix?"
           title="What is Chillflix?"
@@ -22,6 +23,7 @@ const Questions = () => {
           week!
         </AccordionItem>
         <AccordionItem
+          className="text-white"
           key="2"
           aria-label="How much does Chillflix cost?"
           title="How much does Chillflix cost?"
@@ -31,6 +33,7 @@ const Questions = () => {
           to xx a month. No extra costs, no contracts.
         </AccordionItem>
         <AccordionItem
+          className="text-white"
           key="3"
           aria-label="Where can I watch?"
           title="Where can I watch?"
@@ -47,6 +50,7 @@ const Questions = () => {
           without an internet connection. Take Chillflix with you anywhere.
         </AccordionItem>
         <AccordionItem
+          className="text-white"
           key="4"
           aria-label="How do I cancel?"
           title="How do I cancel?"
@@ -56,6 +60,7 @@ const Questions = () => {
           cancellation fees - start or stop your account anytime.
         </AccordionItem>
         <AccordionItem
+          className="text-white"
           key="5"
           aria-label="What can I watch on Chillflix?"
           title="What can I watch on Chillflix?"
@@ -65,6 +70,7 @@ const Questions = () => {
           much as you want, anytime you want.
         </AccordionItem>
         <AccordionItem
+          className="text-white"
           key="6"
           aria-label="Is Chillflix good for kids?"
           title="Is Chillflix good for kids?"

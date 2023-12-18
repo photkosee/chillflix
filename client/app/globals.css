@@ -16,6 +16,14 @@
   after:border-8 after:border-b-0 after:border-transparent after:border-t-primary after:content-[""] md:mx-2 md:h-[95px] md:text-base;
 }
 
+.planRow {
+  @apply flex flex-wrap items-center border-b border-gray-300 text-xs md:text-base;
+}
+
+.planCell {
+  @apply w-[calc(100%/4)] pb-4 text-center font-semibold md:w-[calc(65%/4)] md:pb-0;
+}
+
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,

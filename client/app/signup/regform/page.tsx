@@ -1,11 +1,12 @@
 "use client";
 
+import { useState } from "react";
+import { useForm, SubmitHandler } from "react-hook-form";
+import { toast } from "react-toastify";
 import { Checkbox } from "@nextui-org/react";
 import { XCircle } from "lucide-react";
 import { z } from "zod";
-import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { toast } from "react-toastify";
 
 import axiosInstance from "@/app/axios";
 
@@ -28,6 +29,7 @@ export const SignUpSchema = z.object({
 export type SignUpSchemaType = z.infer<typeof SignUpSchema>;
 
 const Page = () => {
+  const [isSelected, setIsSelected] = useState(false);
   const {
     register,
     handleSubmit,
@@ -37,20 +39,26 @@ const Page = () => {
   const onSubmit: SubmitHandler<SignUpSchemaType> = async (data) => {
     console.log(data.email, data.password);
     const url = `/api/auth/register`;
-    toast.promise(axiosInstance.post(url, {
-      email: data.email,
-      password: data.password,
-    }), {
-      pending: "Registering...",
-    }).then((res) => {
-      toast.success("Registration successful!" + res.data);
-    }).catch((err) => {
-      toast.error(err);
-    })
+    toast
+      .promise(
+        axiosInstance.post(url, {
+          email: data.email,
+          password: data.password,
+        }),
+        {
+          pending: "Registering...",
+        },
+      )
+      .then((res) => {
+        toast.success("Registration successful!" + res.data);
+      })
+      .catch((err) => {
+        toast.error(err);
+      });
   };
 
   return (
-    <div className="mx-auto flex h-full max-w-[500px] items-center justify-center p-5">
+    <div className="mx-auto flex h-full max-w-[500px] items-center justify-center p-10">
       <form
         className="flex min-h-[70vh] flex-col items-start justify-center gap-5"
         onSubmit={handleSubmit(onSubmit)}
@@ -127,7 +135,14 @@ const Page = () => {
           )}
         </div>
 
-        <Checkbox>
+        <Checkbox
+          classNames={{
+            wrapper: "",
+          }}
+          color="success"
+          isSelected={isSelected}
+          onValueChange={setIsSelected}
+        >
           <div className="text-sm text-black">
             Please do not email me Chillflix special offers.
           </div>
