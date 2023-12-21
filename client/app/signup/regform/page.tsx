@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { toast } from "react-toastify";
-import { Checkbox } from "@nextui-org/react";
+import { Checkbox, CircularProgress } from "@nextui-org/react";
 import { XCircle } from "lucide-react";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -29,7 +29,8 @@ export const SignUpSchema = z.object({
 export type SignUpSchemaType = z.infer<typeof SignUpSchema>;
 
 const Page = () => {
-  const [isSelected, setIsSelected] = useState(false);
+  const [isSelected, setIsSelected] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
   const {
     register,
     handleSubmit,
@@ -37,24 +38,24 @@ const Page = () => {
   } = useForm<SignUpSchemaType>({ resolver: zodResolver(SignUpSchema) });
 
   const onSubmit: SubmitHandler<SignUpSchemaType> = async (data) => {
-    console.log(data.email, data.password);
+    setLoading(true);
     const url = `/api/auth/register`;
     toast
       .promise(
         axiosInstance.post(url, {
+          username: "test",
           email: data.email,
           password: data.password,
         }),
-        {
-          pending: "Registering...",
-        },
+        {},
       )
       .then((res) => {
         toast.success("Registration successful!" + res.data);
       })
       .catch((err) => {
-        toast.error(err);
-      });
+        toast.error(err.message);
+      })
+      .finally(() => setLoading(false));
   };
 
   return (
@@ -149,12 +150,18 @@ const Page = () => {
         </Checkbox>
 
         <button
-          className="w-full rounded-sm bg-primary py-4
-          text-center text-xl text-white hover:bg-primary/90
+          className="flex h-[67px] w-full items-center
+          justify-center rounded-sm bg-primary text-center
+          text-xl text-white hover:bg-primary/90
           "
           type="submit"
+          disabled={loading}
         >
-          Next
+          {loading ? (
+            <CircularProgress color="default" aria-label="Loading..." />
+          ) : (
+            "Next"
+          )}
         </button>
       </form>
     </div>
