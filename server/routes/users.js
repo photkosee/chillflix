@@ -24,7 +24,7 @@ router.put("/:id", verify, async (req, res) => {
       );
       res.status(200).json(updatedUser);
     } catch (err) {
-      res.status(500).json(err);
+      res.status(400).json(err.message);
     }
   } else {
     res.status(403).json("You can update only your account!");
@@ -38,7 +38,7 @@ router.get("/:id", verify, async (req, res) => {
     const { password, ...info } = user._doc;
     res.status(200).json(info);
   } catch (err) {
-    res.status(500).json(err);
+    res.status(400).json(err.message);
   }
 });
 
@@ -52,7 +52,7 @@ router.get("/", verify, async (req, res) => {
         ? await User.find().sort({ _id: -1 }).limit(5)
         : await User.find();
     } catch (err) {
-      res.status(500).json(err);
+      res.status(400).json(err.message);
     }
   } else {
     res.status(403).json("You are not allowed to see all users!");
@@ -62,19 +62,21 @@ router.get("/", verify, async (req, res) => {
 // get statistics
 router.get("/stats", verify, async (req, res) => {
   try {
-    const data = await User.aggregate([{
-      $project: {
-        month: { $month: "$createdAt" },
+    const data = await User.aggregate([
+      {
+        $project: {
+          month: { $month: "$createdAt" },
+        },
+        $group: {
+          _id: "$month",
+          total: { $sum: 1 },
+        },
       },
-      $group: {
-        _id: "$month",
-        total: { $sum: 1 },
-      },
-    }]);
+    ]);
 
     res.status(200).json(data);
   } catch (err) {
-    res.status(500).json(err);
+    res.status(400).json(err.message);
   }
 });
 
@@ -85,7 +87,7 @@ router.delete("/:id", verify, async (req, res) => {
       await User.findByIdAndDelete(req.params.id);
       res.status(200).json("User has been deleted.");
     } catch (err) {
-      res.status(500).json(err);
+      res.status(400).json(err.message);
     }
   } else {
     res.status(403).json("You can delete only your account!");
