@@ -9,6 +9,9 @@ import { z } from "zod";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
+import { toast } from "react-toastify";
+import axiosInstance from "../axios";
+import { CircularProgress } from "@nextui-org/react";
 
 export const SignInSchema = z.object({
   email: z
@@ -27,6 +30,7 @@ export const SignInSchema = z.object({
 export type SignInSchemaType = z.infer<typeof SignInSchema>;
 
 const Page = () => {
+  const [loading, setLoading] = useState<boolean>(false);
   const [hasEmail, setHasEmail] = useState<boolean>(true);
   const [isPasswordInvalid, setIsPasswordInvalid] = useState<boolean>(false);
   const {
@@ -36,21 +40,23 @@ const Page = () => {
   } = useForm<SignInSchemaType>({ resolver: zodResolver(SignInSchema) });
 
   const onSubmit: SubmitHandler<SignInSchemaType> = async (data) => {
-    console.log(data.email, data.password);
-    try {
-      const url = `${process.env.API_PORT}/api/auth/login`;
-      const response = await axios
-        .post(url, {
+    setLoading(true);
+    const url = `/api/auth/login`;
+    toast
+      .promise(
+        axiosInstance.post(url, {
           email: data.email,
           password: data.password,
-        })
-        .then((res) => {
-          const { token } = res.data;
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    } catch (err) {}
+        }),
+        {},
+      )
+      .then((res) => {
+        toast.success("Login successful!");
+      })
+      .catch((err) => {
+        toast.error(err.message);
+      })
+      .finally(() => setLoading(false));
   };
 
   return (
@@ -182,10 +188,17 @@ const Page = () => {
               </div>
 
               <button
-                className="rounded-sm bg-primary py-3 text-white hover:bg-primary/90"
+                className="flex h-[53px] items-center justify-center rounded-sm
+                bg-primary text-white hover:bg-primary/90
+                "
                 type="submit"
+                disabled={loading}
               >
-                Sign In
+                {loading ? (
+                  <CircularProgress color="default" aria-label="Loading..." />
+                ) : (
+                  "Sign In"
+                )}
               </button>
 
               <div className="flex w-full justify-center gap-3">

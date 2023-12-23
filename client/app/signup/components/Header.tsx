@@ -9,7 +9,11 @@ const Header = () => {
       "
     >
       <Link href="/" className="">
-        <img src="/images/logo.png" alt="ChillFlix logo" className="w-[120px]" />
+        <img
+          src="/images/logo.png"
+          alt="ChillFlix logo"
+          className="w-[100px] sm:w-[120px] lg:w-[140px]"
+        />
       </Link>
       <Link
         href="/login"

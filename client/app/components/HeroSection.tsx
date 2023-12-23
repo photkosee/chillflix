@@ -2,8 +2,6 @@ import Link from "next/link";
 
 import { ChevronRight } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
-
 const HeroSection = () => {
   return (
     <div
@@ -14,17 +12,27 @@ const HeroSection = () => {
     >
       <div
         className="
-        flex h-screen min-h-[500px] flex-col bg-opacity-40
+        flex h-screen min-h-[500px] flex-col bg-black/30
         bg-gradient-to-t from-black via-transparent to-black
         "
       >
-        <nav className="mx-auto flex w-full max-w-5xl justify-between px-2 py-5 sm:px-10">
+        <nav className="mx-auto flex w-full max-w-7xl justify-between px-5 py-5 sm:px-10">
           <Link href="/" passHref>
-            <img src="/images/logo.png" alt="ChillFlix logo" className="w-[120px]" />
+            <img
+              src="/images/logo.png"
+              alt="ChillFlix logo"
+              className="w-[120px] sm:w-[130px] lg:w-[140px]"
+            />
           </Link>
 
           <Link href="/login" passHref>
-            <Button className="h-9 px-5">Sign In</Button>
+            <button
+              className="rounded-sm bg-primary px-4 py-2 text-sm font-bold text-white
+              transition duration-300 hover:bg-secondary
+              "
+            >
+              Sign In
+            </button>
           </Link>
         </nav>
 
@@ -47,10 +55,14 @@ const HeroSection = () => {
 
           <div className="flex flex-col items-center gap-2 md:flex-row">
             <Link href="/signup" passHref>
-              <Button className="h-12 px-5 text-lg font-bold">
+              <button
+                className="flex items-center justify-center rounded-sm bg-primary py-2 pl-4 pr-3
+                text-xl font-bold text-white transition duration-300 hover:bg-secondary
+                "
+              >
                 Register
                 <ChevronRight />
-              </Button>
+              </button>
             </Link>
           </div>
         </div>

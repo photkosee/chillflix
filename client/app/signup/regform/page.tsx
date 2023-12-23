@@ -43,14 +43,13 @@ const Page = () => {
     toast
       .promise(
         axiosInstance.post(url, {
-          username: "test",
           email: data.email,
           password: data.password,
         }),
         {},
       )
       .then((res) => {
-        toast.success("Registration successful!" + res.data);
+        toast.success("Registration successful!");
       })
       .catch((err) => {
         toast.error(err.message);
