@@ -9,6 +9,8 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import axiosInstance from "@/app/axios";
+import { FcGoogle } from "react-icons/fc";
+import { FaFacebook, FaGithub } from "react-icons/fa";
 
 export const SignUpSchema = z.object({
   email: z
@@ -66,7 +68,7 @@ const Page = () => {
         <div className="flex flex-col">
           <div className="text-xs uppercase text-black">step 2 of 3</div>
           <div className="text-2xl font-semibold text-black sm:text-3xl">
-            Create a password to start your membership
+            Register to start your membership
           </div>
         </div>
 
@@ -133,6 +135,30 @@ const Page = () => {
               {errors.password.message}
             </div>
           )}
+        </div>
+
+        <div className="flex w-full justify-center gap-3">
+          <div
+            className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full
+            border border-gray-300 bg-white transition hover:opacity-80
+            "
+          >
+            <FcGoogle size={30} />
+          </div>
+          <div
+            className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full
+            border border-gray-300 bg-white transition hover:opacity-80
+            "
+          >
+            <FaFacebook color="blue" size={30} />
+          </div>
+          <div
+            className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full
+            border border-gray-300 bg-white transition hover:opacity-80
+            "
+          >
+            <FaGithub color="black" size={30} />
+          </div>
         </div>
 
         <Checkbox
