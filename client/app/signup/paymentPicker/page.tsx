@@ -1,12 +1,6 @@
 import Link from "next/link";
 
-import {
-  Check,
-  CheckCircle2,
-  ChevronRight,
-  KeyRound,
-  Lock,
-} from "lucide-react";
+import { ChevronRight, KeyRound, Lock } from "lucide-react";
 
 const Page = () => {
   return (
