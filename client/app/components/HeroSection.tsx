@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { ChevronRight } from "lucide-react";
+import AuthForm from "./AuthForm";
 
 const HeroSection = () => {
   return (
@@ -49,22 +49,10 @@ const HeroSection = () => {
             Join today. Cancel anytime
           </div>
           <div className="p text-center text-white">
-            Ready to watch? Enter your email to create or restart your
+            Ready to watch? Sign in or register to create or restart your
             membership.
           </div>
-
-          <div className="flex flex-col items-center gap-2 md:flex-row">
-            <Link href="/signup" passHref>
-              <button
-                className="flex items-center justify-center rounded-sm bg-primary py-2 pl-4 pr-3
-                text-xl font-bold text-white transition duration-300 hover:bg-secondary
-                "
-              >
-                Register
-                <ChevronRight />
-              </button>
-            </Link>
-          </div>
+          <AuthForm />
         </div>
       </div>
     </div>

@@ -1,9 +1,5 @@
-import Link from "next/link";
-
-import { ChevronRight } from "lucide-react";
-
 import Questions from "./Questions";
-import { Button } from "@/components/ui/button";
+import AuthForm from "./AuthForm";
 
 const QuestionSection = () => {
   return (
@@ -24,17 +20,9 @@ const QuestionSection = () => {
           "
         >
           <div className="p text-center text-white">
-            Ready to watch? Create your membership.
+            Ready to watch? Sign In or create your membership.
           </div>
-
-          <div className="flex flex-col items-center gap-2 md:flex-row">
-            <Link href="/signup" passHref>
-              <Button className="h-12 px-5 text-lg font-bold">
-                Register
-                <ChevronRight />
-              </Button>
-            </Link>
-          </div>
+          <AuthForm />
         </div>
       </div>
     </>

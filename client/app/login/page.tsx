@@ -72,7 +72,7 @@ const Page = () => {
         via-transparent to-black pb-10 lg:bg-gradient-to-t
         "
       >
-        <nav className="p-5">
+        <nav className="w-full max-w-7xl self-center p-5">
           <Link href="/" passHref>
             <img
               src="/images/logo.png"
