@@ -6,14 +6,14 @@ const HeroSection = () => {
   return (
     <div
       className="
-      relative h-screen min-h-[500px] w-full bg-[url('/images/hero-cover.jpg')]
-      bg-cover bg-fixed bg-center bg-no-repeat
+      relative w-full bg-[url('/images/hero-cover.jpg')]
+      bg-cover bg-bottom bg-no-repeat
       "
     >
       <div
         className="
-        flex h-screen min-h-[500px] flex-col bg-black/30
-        bg-gradient-to-t from-black via-transparent to-black
+        flex flex-col gap-40 bg-black/30 bg-gradient-to-t from-black via-transparent to-black pb-40
+        lg:gap-48 lg:pb-48
         "
       >
         <nav className="mx-auto flex w-full max-w-7xl justify-between px-5 py-5 sm:px-10">
