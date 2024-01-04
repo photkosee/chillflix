@@ -1,6 +1,6 @@
 const Billboard = () => {
   return (
-    <div className="relative h-[56.25vw] w-full">
+    <div className="relative h-[55vw] w-full">
       <video
         autoPlay
         muted

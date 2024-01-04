@@ -34,7 +34,9 @@ const Header = () => {
     <header
       className={`
       fixed z-30 flex w-full items-center justify-between px-4 py-5
-      transition duration-300 md:px-10 ${isSticky ? "bg-zinc-900/80" : "bg-transparent"}
+      transition duration-300 md:px-10 ${
+        isSticky ? "bg-zinc-900/80" : "bg-transparent"
+      }
       `}
       ref={stickyDivRef}
     >
@@ -95,7 +97,7 @@ const Header = () => {
 
       <div className="flex items-center gap-7 text-white">
         <div className="hidden items-center gap-3 sm:flex">
-          <div className="relative h-9 w-[180px] lg:w-[230px]">
+          <div className="relative flex h-9 w-[180px] justify-end lg:w-[230px]">
             <input
               className={`h-full rounded-3xl py-1.5 pl-4 pr-10 ${
                 openSearch ? "w-full bg-neutral-800" : "w-0 bg-transparent"

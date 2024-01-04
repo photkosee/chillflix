@@ -7,7 +7,7 @@ const AuthForm = () => {
     <div className="flex flex-col items-center gap-3 xs:flex-row">
       <Link href="/login" passHref>
         <button
-          className="flex items-center justify-center rounded-sm bg-primary py-2 pl-4 pr-3
+          className="flex items-center justify-center rounded-sm bg-primary px-3 py-2
           text-xl font-bold text-white transition duration-300 hover:bg-secondary
           "
         >

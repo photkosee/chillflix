@@ -4,14 +4,14 @@ const ThirdSection = () => {
       <div className="flex w-full items-center justify-center bg-black">
         <div
           className="
-          flex w-full max-w-7xl items-center justify-start px-5 py-20
+          flex w-full max-w-7xl items-center justify-center px-5 py-20
           md:px-28 lg:justify-start
           "
         >
           <div
             className="
-            flex w-full max-w-xl flex-col items-start justify-center
-            gap-7 lg:items-start lg:justify-start
+            flex w-full max-w-xl flex-col items-center justify-center
+            gap-7 lg:items-start
             "
           >
             <div className="h1 text-center text-white lg:text-start">
