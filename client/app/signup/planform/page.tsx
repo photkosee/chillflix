@@ -1,12 +1,17 @@
 "use client";
 
 import Link from "next/link";
+import { useContext } from "react";
 
 import { Check } from "lucide-react";
 
 import PlanTable from "../components/PlanTable";
+import { PlanContext, PlanContextType, usePlan } from "../planContext";
 
 const Page = () => {
+  useContext(PlanContext);
+  const { plan, setPlan }: PlanContextType = usePlan?.()!;
+
   return (
     <div className="flex h-full w-full items-center justify-center px-5 pb-24 pt-7 xs:px-10">
       <div className="flex min-h-[70vh] w-full max-w-5xl flex-col items-start justify-center gap-10">
@@ -42,7 +47,7 @@ const Page = () => {
           </div>
         </div>
 
-        <PlanTable />
+        <PlanTable plan={plan} setPlan={setPlan} />
 
         <div className="flex w-full flex-col gap-2 text-xs text-gray-500">
           <div>

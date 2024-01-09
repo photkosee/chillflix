@@ -2,7 +2,12 @@
 
 import { useEffect, useRef, useState } from "react";
 
-const PlanTable = () => {
+interface PlanTableProps {
+  plan: string;
+  setPlan: React.Dispatch<React.SetStateAction<string>>;
+}
+
+const PlanTable: React.FC<PlanTableProps> = ({ plan, setPlan }) => {
   const [isSticky, setIsSticky] = useState<boolean>(false);
   const stickyDivRef = useRef<HTMLDivElement>(null);
 
@@ -29,10 +34,18 @@ const PlanTable = () => {
           className="flex w-full items-center justify-end self-end py-3 md:w-[65%]"
           ref={stickyDivRef}
         >
-          <div className="planBox">Mobile</div>
-          <div className="planBox">Basic</div>
-          <div className="planBox">Standard</div>
-          <div className="planBox">Premium</div>
+          <div className="planBox bg-primary/50 after:border-t-primary/50">
+            Mobile
+          </div>
+          <div className="planBox bg-primary/50 after:border-t-primary/50">
+            Basic
+          </div>
+          <div className="planBox bg-primary/50 after:border-t-primary/50">
+            Standard
+          </div>
+          <div className="planBox bg-primary/50 after:border-t-primary/50">
+            Premium
+          </div>
         </div>
       </div>
 
@@ -42,54 +55,30 @@ const PlanTable = () => {
             <td className="w-full py-3 text-center md:w-[35%] md:py-4 md:text-left">
               Monthly price
             </td>
-            <td className="planCell text-black/50">
-              THB 99
-            </td>
-            <td className="planCell text-black/50">
-              THB 169
-            </td>
-            <td className="planCell text-black/50">
-              THB 349
-            </td>
-            <td className="planCell text-black/50">
-              THB 419
-            </td>
+            <td className="planCell text-black/30">THB 99</td>
+            <td className="planCell text-black/30">THB 169</td>
+            <td className="planCell text-black/30">THB 349</td>
+            <td className="planCell text-black/30">THB 419</td>
           </tr>
 
           <tr className="planRow">
             <td className="w-full py-3 text-center md:w-[35%] md:py-4 md:text-left">
               Video quality
             </td>
-            <td className="planCell text-black/50">
-              Good
-            </td>
-            <td className="planCell text-black/50">
-              Good
-            </td>
-            <td className="planCell text-black/50">
-              Better
-            </td>
-            <td className="planCell text-black/50">
-              Best
-            </td>
+            <td className="planCell text-black/30">Good</td>
+            <td className="planCell text-black/30">Good</td>
+            <td className="planCell text-black/30">Better</td>
+            <td className="planCell text-black/30">Best</td>
           </tr>
 
           <tr className="planRow">
             <td className="w-full py-3 text-center md:w-[35%] md:py-4 md:text-left">
               Resolution
             </td>
-            <td className="planCell text-black/50">
-              480p
-            </td>
-            <td className="planCell text-black/50">
-              720p
-            </td>
-            <td className="planCell text-black/50">
-              1080p
-            </td>
-            <td className="planCell text-black/50">
-              4K+HDR
-            </td>
+            <td className="planCell text-black/30">480p</td>
+            <td className="planCell text-black/30">720p</td>
+            <td className="planCell text-black/30">1080p</td>
+            <td className="planCell text-black/30">4K+HDR</td>
           </tr>
 
           <tr className="flex flex-wrap text-xs md:text-base">
@@ -99,7 +88,7 @@ const PlanTable = () => {
             <td
               className="
                   flex w-[calc(100%/4)] flex-col gap-3 
-                  pb-16 text-center font-semibold text-black/50 md:w-[calc(65%/4)] md:pt-5
+                  pb-16 text-center font-semibold text-black/30 md:w-[calc(65%/4)] md:pt-5
                   "
             >
               <div className="flex flex-col items-center justify-center gap-1">
@@ -108,7 +97,7 @@ const PlanTable = () => {
                   height="26"
                   viewBox="0 0 24 24"
                   fill="none"
-                  className="text-black/50"
+                  className="text-black/30"
                   xmlns="http://www.w3.org/2000/svg"
                   data-name="Phone"
                   aria-hidden="true"
@@ -130,7 +119,7 @@ const PlanTable = () => {
                   viewBox="0 0 24 24"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
-                  className="text-black/50"
+                  className="text-black/30"
                   data-name="Tablet"
                   aria-hidden="true"
                   focusable="false"
@@ -148,7 +137,7 @@ const PlanTable = () => {
             <td
               className="
                   flex w-[calc(100%/4)] flex-col gap-3 
-                  pb-16 text-center font-semibold text-black/50 md:w-[calc(65%/4)] md:pt-5
+                  pb-16 text-center font-semibold text-black/30 md:w-[calc(65%/4)] md:pt-5
                   "
             >
               <div className="flex flex-col items-center justify-center gap-1">
@@ -157,7 +146,7 @@ const PlanTable = () => {
                   height="26"
                   viewBox="0 0 24 24"
                   fill="none"
-                  className="text-black/50"
+                  className="text-black/30"
                   xmlns="http://www.w3.org/2000/svg"
                   data-name="Phone"
                   aria-hidden="true"
@@ -179,7 +168,7 @@ const PlanTable = () => {
                   viewBox="0 0 24 24"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
-                  className="text-black/50"
+                  className="text-black/30"
                   data-name="Tablet"
                   aria-hidden="true"
                   focusable="false"
@@ -200,7 +189,7 @@ const PlanTable = () => {
                   viewBox="0 0 24 24"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
-                  className="text-black/50"
+                  className="text-black/30"
                   data-name="Laptop"
                   aria-hidden="true"
                   focusable="false"
@@ -221,7 +210,7 @@ const PlanTable = () => {
                   viewBox="0 0 24 24"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
-                  className="text-black/50"
+                  className="text-black/30"
                   data-name="Tv"
                   aria-hidden="true"
                   focusable="false"
@@ -239,7 +228,7 @@ const PlanTable = () => {
             <td
               className="
                   flex w-[calc(100%/4)] flex-col gap-3 
-                  pb-16 text-center font-semibold text-black/50 md:w-[calc(65%/4)] md:pt-5
+                  pb-16 text-center font-semibold text-black/30 md:w-[calc(65%/4)] md:pt-5
                   "
             >
               <div className="flex flex-col items-center justify-center gap-1">
@@ -248,7 +237,7 @@ const PlanTable = () => {
                   height="26"
                   viewBox="0 0 24 24"
                   fill="none"
-                  className="text-black/50"
+                  className="text-black/30"
                   xmlns="http://www.w3.org/2000/svg"
                   data-name="Phone"
                   aria-hidden="true"
@@ -270,7 +259,7 @@ const PlanTable = () => {
                   viewBox="0 0 24 24"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
-                  className="text-black/50"
+                  className="text-black/30"
                   data-name="Tablet"
                   aria-hidden="true"
                   focusable="false"
@@ -291,7 +280,7 @@ const PlanTable = () => {
                   viewBox="0 0 24 24"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
-                  className="text-black/50"
+                  className="text-black/30"
                   data-name="Laptop"
                   aria-hidden="true"
                   focusable="false"
@@ -312,7 +301,7 @@ const PlanTable = () => {
                   viewBox="0 0 24 24"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
-                  className="text-black/50"
+                  className="text-black/30"
                   data-name="Tv"
                   aria-hidden="true"
                   focusable="false"
@@ -330,7 +319,7 @@ const PlanTable = () => {
             <td
               className="
                   flex w-[calc(100%/4)] flex-col gap-3 
-                  pb-16 text-center font-semibold text-black/50 md:w-[calc(65%/4)] md:pt-5
+                  pb-16 text-center font-semibold text-black/30 md:w-[calc(65%/4)] md:pt-5
                   "
             >
               <div className="flex flex-col items-center justify-center gap-1">
@@ -339,7 +328,7 @@ const PlanTable = () => {
                   height="26"
                   viewBox="0 0 24 24"
                   fill="none"
-                  className="text-black/50"
+                  className="text-black/30"
                   xmlns="http://www.w3.org/2000/svg"
                   data-name="Phone"
                   aria-hidden="true"
@@ -361,7 +350,7 @@ const PlanTable = () => {
                   viewBox="0 0 24 24"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
-                  className="text-black/50"
+                  className="text-black/30"
                   data-name="Tablet"
                   aria-hidden="true"
                   focusable="false"
@@ -382,7 +371,7 @@ const PlanTable = () => {
                   viewBox="0 0 24 24"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
-                  className="text-black/50"
+                  className="text-black/30"
                   data-name="Laptop"
                   aria-hidden="true"
                   focusable="false"
@@ -403,7 +392,7 @@ const PlanTable = () => {
                   viewBox="0 0 24 24"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
-                  className="text-black/50"
+                  className="text-black/30"
                   data-name="Tv"
                   aria-hidden="true"
                   focusable="false"
