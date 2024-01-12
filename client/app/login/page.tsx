@@ -159,8 +159,8 @@ const Page = () => {
                   >
                     <input
                       className="text-md bg-neutral peer block w-full appearance-none
-                        rounded-sm px-6 pb-1 pt-6 text-black focus:outline-none
-                        "
+                      rounded-sm px-6 pb-1 pt-6 text-black focus:outline-none
+                      "
                       id="password"
                       {...register("password")}
                       type="password"
@@ -169,11 +169,11 @@ const Page = () => {
 
                     <label
                       className="
-                        text-md absolute left-6 top-4 z-10 origin-[0] -translate-y-3
-                        scale-75 transform cursor-text text-gray-900 duration-100
-                        peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100
-                        peer-focus:-translate-y-3 peer-focus:scale-75
-                        "
+                      text-md absolute left-6 top-4 z-10 origin-[0] -translate-y-3
+                      scale-75 transform cursor-text text-gray-900 duration-100
+                      peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100
+                      peer-focus:-translate-y-3 peer-focus:scale-75
+                      "
                       htmlFor="password"
                     >
                       Password
@@ -204,21 +204,21 @@ const Page = () => {
               <div className="flex w-full justify-center gap-3">
                 <div
                   className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full
-                 bg-white transition hover:opacity-80
+                  bg-white transition hover:bg-black/10
                   "
                 >
                   <FcGoogle size={30} />
                 </div>
                 <div
                   className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full
-                 bg-white transition hover:opacity-80
+                  bg-white transition hover:bg-black/10
                   "
                 >
                   <FaFacebook color="blue" size={30} />
                 </div>
                 <div
                   className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full
-                 bg-white transition hover:opacity-80
+                  bg-white transition hover:bg-black/10
                   "
                 >
                   <FaGithub color="black" size={30} />

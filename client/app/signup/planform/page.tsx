@@ -1,17 +1,21 @@
 "use client";
 
 import Link from "next/link";
-import { useContext } from "react";
+import dynamic from "next/dynamic";
 
 import { Check } from "lucide-react";
+import { Spinner } from "@nextui-org/react";
 
-import PlanTable from "../components/PlanTable";
-import { PlanContext, PlanContextType, usePlan } from "../planContext";
+const PlanTable = dynamic(() => import("../components/PlanTable"), {
+  ssr: false,
+  loading: () => (
+    <div className="flex w-full items-center justify-center">
+      <Spinner />
+    </div>
+  ),
+});
 
 const Page = () => {
-  useContext(PlanContext);
-  const { plan, setPlan }: PlanContextType = usePlan?.()!;
-
   return (
     <div className="flex h-full w-full items-center justify-center px-5 pb-24 pt-7 xs:px-10">
       <div className="flex min-h-[70vh] w-full max-w-5xl flex-col items-start justify-center gap-10">
@@ -47,7 +51,7 @@ const Page = () => {
           </div>
         </div>
 
-        <PlanTable plan={plan} setPlan={setPlan} />
+        <PlanTable />
 
         <div className="flex w-full flex-col gap-2 text-xs text-gray-500">
           <div>
@@ -66,9 +70,11 @@ const Page = () => {
         <Link
           href="/signup/registration"
           className="
-          w-full max-w-[400px] self-center rounded-sm bg-primary py-4
-          text-center text-xl text-white hover:bg-primary/90
+          pointer-events-none w-full max-w-[400px] self-center rounded-sm bg-primary
+          py-4 text-center text-xl text-white hover:bg-primary/90
           "
+          aria-disabled={true}
+          tabIndex={true ? -1 : undefined}
         >
           Next
         </Link>

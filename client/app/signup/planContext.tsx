@@ -7,7 +7,7 @@ export interface PlanContextType {
   setPlan: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export const PlanContext = createContext<PlanContextType | null>({
+export const PlanContext = createContext<PlanContextType>({
   plan: "premium",
   setPlan: () => {},
 });
@@ -25,18 +25,18 @@ export function PlanContextProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const localStorage =
-    typeof window !== "undefined" ? window.localStorage : null;
-  const [plan, setPlan] = useState<string>("premium");
-
-  useEffect(() => {
-    if (localStorage && localStorage.getItem("plan")) {
-      setPlan(JSON.parse(localStorage.getItem("plan") || "Premium"));
+  const ls = typeof window !== "undefined" ? window.localStorage : null;
+  const [plan, setPlan] = useState<string>(() => {
+    if (ls && ls.getItem("plan")) {
+      return JSON.parse(ls.getItem("plan") || "premium");
+    } else {
+      ls?.setItem("plan", "premium");
+      return "premium";
     }
-  }, []);
+  });
 
   useEffect(() => {
-    localStorage?.setItem("plan", JSON.stringify(plan));
+    ls?.setItem("plan", JSON.stringify(plan));
   }, [plan]);
 
   return (

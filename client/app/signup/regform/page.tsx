@@ -140,21 +140,21 @@ const Page = () => {
         <div className="flex w-full justify-center gap-3">
           <div
             className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full
-            border border-gray-300 bg-white transition hover:opacity-80
+            border border-gray-300 bg-white transition hover:bg-black/10
             "
           >
             <FcGoogle size={30} />
           </div>
           <div
             className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full
-            border border-gray-300 bg-white transition hover:opacity-80
+            border border-gray-300 bg-white transition hover:bg-black/10
             "
           >
             <FaFacebook color="blue" size={30} />
           </div>
           <div
             className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full
-            border border-gray-300 bg-white transition hover:opacity-80
+            border border-gray-300 bg-white transition hover:bg-black/10
             "
           >
             <FaGithub color="black" size={30} />
