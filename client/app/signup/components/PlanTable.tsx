@@ -1,7 +1,7 @@
 "use client";
 
 import { useContext, useEffect, useRef, useState } from "react";
-import { PlanContext, PlanContextType, usePlan } from "../planContext";
+import { PlanContext, PlanContextType, usePlan } from "../PlanContext";
 
 const PlanTable = () => {
   useContext(PlanContext);

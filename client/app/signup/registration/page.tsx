@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { PlanContextType, usePlan } from "../planContext";
+import { PlanContextType, usePlan } from "../PlanContext";
 
 const Page = () => {
   const { plan }: PlanContextType = usePlan?.()!;

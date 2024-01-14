@@ -9,8 +9,8 @@ import { Spinner } from "@nextui-org/react";
 const PlanTable = dynamic(() => import("../components/PlanTable"), {
   ssr: false,
   loading: () => (
-    <div className="flex w-full items-center justify-center">
-      <Spinner />
+    <div className="flex min-h-[80vh] w-full items-start justify-center p-10">
+      <Spinner size="lg" />
     </div>
   ),
 });

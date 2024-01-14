@@ -1,6 +1,6 @@
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-import { PlanContextProvider } from "./planContext";
+import { PlanContextProvider } from "./PlanContext";
 
 export default function RootLayout({
   children,

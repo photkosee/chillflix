@@ -1,11 +1,12 @@
 "use client";
 
 import { NextUIProvider } from "@nextui-org/react";
+import { AuthContextProvider } from "./AuthContext";
 
-export function Providers({children}: { children: React.ReactNode }) {
+export function Providers({ children }: { children: React.ReactNode }) {
   return (
-    <NextUIProvider>
-      {children}
-    </NextUIProvider>
+    <AuthContextProvider>
+      <NextUIProvider>{children}</NextUIProvider>
+    </AuthContextProvider>
   );
-};
+}
