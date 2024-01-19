@@ -1,9 +1,14 @@
 "use client";
 
 import { useContext, useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import { PlanContext, PlanContextType, usePlan } from "../PlanContext";
 
-const PlanTable = () => {
+interface PlanTableProps {
+  path: string;
+}
+
+const PlanTable: React.FC<PlanTableProps> = ({ path }) => {
   useContext(PlanContext);
   const { plan, setPlan }: PlanContextType = usePlan?.()!;
   const [isSticky, setIsSticky] = useState<boolean>(false);
@@ -35,7 +40,7 @@ const PlanTable = () => {
   };
 
   return (
-    <div className="flex w-full flex-col gap-4">
+    <div className="flex w-full flex-col gap-7">
       <div
         className={`${
           isSticky && "sticky top-0 bg-white"
@@ -469,6 +474,30 @@ const PlanTable = () => {
           </tr>
         </tbody>
       </table>
+
+      <div className="flex w-full flex-col gap-2 text-xs text-gray-500">
+        <div>
+          HD (720p), Full HD (1080p), Ultra HD (4K) and HDR availability subject
+          to your internet service and device capabilities. Not all content is
+          available in all resolutions. But we don&apos;t have Terms of Use for
+          more details.
+        </div>
+        <div>
+          Only people who live with you may use your account. Watch on 4
+          different devices at the same time with Premium, 2 with Standard, and
+          1 with Basic and Mobile.
+        </div>
+      </div>
+
+      <Link
+        href={path}
+        className="
+          w-full max-w-[400px] self-center rounded-sm bg-primary
+          py-4 text-center text-xl text-white hover:bg-primary/90
+          "
+      >
+        Next
+      </Link>
     </div>
   );
 };

@@ -51,33 +51,7 @@ const Page = () => {
           </div>
         </div>
 
-        <PlanTable />
-
-        <div className="flex w-full flex-col gap-2 text-xs text-gray-500">
-          <div>
-            HD (720p), Full HD (1080p), Ultra HD (4K) and HDR availability
-            subject to your internet service and device capabilities. Not all
-            content is available in all resolutions. But we don&apos;t have
-            Terms of Use for more details.
-          </div>
-          <div>
-            Only people who live with you may use your account. Watch on 4
-            different devices at the same time with Premium, 2 with Standard,
-            and 1 with Basic and Mobile.
-          </div>
-        </div>
-
-        <Link
-          href="/signup/registration"
-          className="
-          pointer-events-none w-full max-w-[400px] self-center rounded-sm bg-primary
-          py-4 text-center text-xl text-white hover:bg-primary/90
-          "
-          aria-disabled={true}
-          tabIndex={true ? -1 : undefined}
-        >
-          Next
-        </Link>
+        <PlanTable path={"/signup/registration"} />
       </div>
     </div>
   );
