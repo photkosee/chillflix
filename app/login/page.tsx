@@ -11,7 +11,8 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import axiosInstance from "../axios";
 import { CircularProgress } from "@nextui-org/react";
-import { SignInSchema, SignInSchemaType } from "./signInSchema";
+
+import { SignInSchema, SignInSchemaType } from "@/app/login/signInSchema";
 
 const Page = () => {
   const [loading, setLoading] = useState<boolean>(false);
