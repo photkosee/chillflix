@@ -5,29 +5,13 @@ import { useState } from "react";
 
 import { FaFacebook, FaGithub } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
-import { z } from "zod";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
 import { toast } from "react-toastify";
 import axiosInstance from "../axios";
 import { CircularProgress } from "@nextui-org/react";
-
-export const SignInSchema = z.object({
-  email: z
-    .string()
-    .trim()
-    .min(1, "Email is required.")
-    .email("Please enter a valid email address."),
-  password: z
-    .string()
-    .trim()
-    .min(1, "Password is required.")
-    .min(4, "Your password must contain between 4 and 60 characters.")
-    .max(60, "Your password must contain between 4 and 60 characters."),
-});
-
-export type SignInSchemaType = z.infer<typeof SignInSchema>;
+import { SignInSchema, SignInSchemaType } from "./schema";
 
 const Page = () => {
   const [loading, setLoading] = useState<boolean>(false);
