@@ -3,16 +3,13 @@
 import Link from "next/link";
 import { useState } from "react";
 
-import { FaFacebook, FaGithub } from "react-icons/fa";
-import { FcGoogle } from "react-icons/fc";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import axios from "axios";
 import { toast } from "react-toastify";
-import axiosInstance from "../axios";
 import { CircularProgress } from "@nextui-org/react";
 
-import { SignInSchema, SignInSchemaType } from "@/app/login/signInSchema";
+import axiosInstance from "../axios";
+import { SignInSchema, SignInSchemaType } from "../login/signInSchema";
 
 const Page = () => {
   const [loading, setLoading] = useState<boolean>(false);
@@ -67,7 +64,7 @@ const Page = () => {
           </Link>
         </nav>
 
-        <div className="m-auto rounded-lg bg-black/80 py-7 sm:px-5">
+        <div className="m-auto rounded-lg bg-black/80 px-9 py-7 sm:px-12">
           <div
             className="
             mx-auto flex h-full max-w-lg flex-col items-center
@@ -75,7 +72,7 @@ const Page = () => {
             "
           >
             <form
-              className="flex w-full flex-col justify-start gap-5 p-7"
+              className="flex w-full flex-col justify-start gap-5 pt-7"
               onSubmit={handleSubmit(onSubmit)}
             >
               <div className="text-xl font-semibold text-white md:text-3xl">
@@ -185,33 +182,22 @@ const Page = () => {
                   "Sign In"
                 )}
               </button>
-
-              <div className="flex w-full justify-center gap-3">
-                <div
-                  className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full
-                  bg-white transition hover:bg-black/10
-                  "
-                >
-                  <FcGoogle size={30} />
-                </div>
-                <div
-                  className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full
-                  bg-white transition hover:bg-black/10
-                  "
-                >
-                  <FaFacebook color="blue" size={30} />
-                </div>
-                <div
-                  className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full
-                  bg-white transition hover:bg-black/10
-                  "
-                >
-                  <FaGithub color="black" size={30} />
-                </div>
-              </div>
             </form>
 
-            <div className="flex w-full flex-col justify-start gap-3 px-7">
+            <button
+              className="flex h-[53px] w-full items-center justify-center rounded-sm
+              bg-primary text-white hover:bg-primary/90
+              "
+              disabled={loading}
+            >
+              {loading ? (
+                <CircularProgress color="default" aria-label="Loading..." />
+              ) : (
+                "Sign in as guest"
+              )}
+            </button>
+
+            <div className="flex w-full flex-col justify-start gap-3">
               <div className="text-gray-400/60">
                 New to Chillflix?&nbsp;
                 <Link href="/signup" className="text-white hover:underline">
