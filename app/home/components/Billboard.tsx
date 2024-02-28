@@ -5,9 +5,9 @@ import { useDispatch } from "react-redux";
 const Billboard = () => {
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getGenres());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(getGenres());
+  // }, [dispatch]);
 
   return (
     <div className="relative h-[55vw] w-full">
