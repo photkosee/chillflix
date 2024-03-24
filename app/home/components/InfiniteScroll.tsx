@@ -11,11 +11,12 @@ interface InfiniteScrollProps {
   fetch: (page: number) => Promise<AnimeCard[]>;
 }
 
+let page = 2;
+
 const InfiniteScroll = ({ fetch }: InfiniteScrollProps) => {
   const { ref, inView } = useInView();
   const [data, setData] = useState<AnimeCard[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  let page = 2;
 
   useEffect(() => {
     if (inView) {
