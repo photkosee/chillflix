@@ -2,16 +2,21 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "react-toastify";
 import { CircularProgress } from "@nextui-org/react";
+import { useDispatch } from "react-redux";
 
 import axiosInstance from "../axios";
 import { SignInSchema, SignInSchemaType } from "../login/signInSchema";
+import { login } from "../features/users/userSlice";
 
 const Page = () => {
+  const router = useRouter();
+  const dispatch = useDispatch();
   const [loading, setLoading] = useState<boolean>(false);
   const [hasEmail, setHasEmail] = useState<boolean>(true);
   const [isPasswordInvalid, setIsPasswordInvalid] = useState<boolean>(false);
@@ -184,20 +189,22 @@ const Page = () => {
               </button>
             </form>
 
-            <Link href="/home" className="w-full" passHref>
-              <button
-                className="flex h-[53px] w-full items-center justify-center rounded-sm
-                bg-primary text-white hover:bg-primary/90
-                "
-                disabled={loading}
-              >
-                {loading ? (
-                  <CircularProgress color="default" aria-label="Loading..." />
-                ) : (
-                  "Sign in as guest"
-                )}
-              </button>
-            </Link>
+            <button
+              className="flex h-[53px] w-full items-center justify-center rounded-sm
+              bg-primary text-white hover:bg-primary/90
+              "
+              disabled={loading}
+              onClick={() => {
+                dispatch(login());
+                router.push("/profiles");
+              }}
+            >
+              {loading ? (
+                <CircularProgress color="default" aria-label="Loading..." />
+              ) : (
+                "Sign in as guest"
+              )}
+            </button>
 
             <div className="flex w-full flex-col justify-start gap-3">
               <div className="text-gray-400/60">

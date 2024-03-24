@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { usePathname, useRouter } from "next/navigation";
 
 import { FaCaretDown } from "react-icons/fa";
 import { Bell, Search } from "lucide-react";
@@ -13,9 +14,9 @@ import {
   DropdownItem,
 } from "@nextui-org/react";
 
-import { RootState } from "@/app/store";
 import { setGenre } from "@/app/features/genres/genreSlice";
-import { usePathname } from "next/navigation";
+import { RootState } from "@/app/store";
+import { logout } from "@/app/features/users/userSlice";
 
 const Header = () => {
   const [openSearch, setOpenSearch] = useState<boolean>(false);
@@ -23,6 +24,8 @@ const Header = () => {
   const stickyDivRef = useRef<HTMLDivElement>(null);
   const dispatch = useDispatch();
   const pathname = usePathname();
+  const router = useRouter();
+  const { user } = useSelector((state: RootState) => state.user);
 
   const handleScroll = () => {
     stickyDivRef.current &&
@@ -111,55 +114,49 @@ const Header = () => {
             </div>
           </DropdownTrigger>
           <DropdownMenu>
-            <DropdownItem key="home" className="text-white">
-              <Link
-                href="/home"
-                className={`transition ${
-                  pathname === "/home" ? "text-red-500" : "hover:text-gray-300"
-                }`}
-                onClick={() => dispatch(setGenre("ALL"))}
-              >
-                Home
-              </Link>
+            <DropdownItem
+              key="home"
+              className={`transition ${
+                pathname === "/home"
+                  ? "text-red-500"
+                  : "text-white hover:text-gray-300"
+              }`}
+              onClick={() => router.push("/home")}
+            >
+              Home
             </DropdownItem>
-            <DropdownItem key="tvshows" className="text-white">
-              <Link
-                href="/home/tv"
-                className={`transition ${
-                  pathname === "/home/tv"
-                    ? "text-red-500"
-                    : "hover:text-gray-300"
-                }`}
-                onClick={() => dispatch(setGenre("TV"))}
-              >
-                TV Shows
-              </Link>
+            <DropdownItem
+              key="tvshows"
+              className={`transition ${
+                pathname === "/home/tv"
+                  ? "text-red-500"
+                  : "text-white hover:text-gray-300"
+              }`}
+              onClick={() => router.push("/home/tv")}
+            >
+              TV Shows
             </DropdownItem>
-            <DropdownItem key="movies" className="text-white">
-              <Link
-                href="/home/movie"
-                className={`transition ${
-                  pathname === "/home/movie"
-                    ? "text-red-500"
-                    : "hover:text-gray-300"
-                }`}
-                onClick={() => dispatch(setGenre("MOVIE"))}
-              >
-                Movies
-              </Link>
+            <DropdownItem
+              key="movies"
+              className={`transition ${
+                pathname === "/home/movie"
+                  ? "text-red-500"
+                  : "text-white hover:text-gray-300"
+              }`}
+              onClick={() => router.push("/home/movie")}
+            >
+              Movies
             </DropdownItem>
-            <DropdownItem key="movies" className="text-white">
-              <Link
-                href="/home/latest"
-                className={`transition ${
-                  pathname === "/home/latest"
-                    ? "text-red-500"
-                    : "hover:text-gray-300"
-                }`}
-                onClick={() => dispatch(setGenre("LATEST"))}
-              >
-                Latest
-              </Link>
+            <DropdownItem
+              key="latest"
+              className={`transition ${
+                pathname === "/home/latest"
+                  ? "text-red-500"
+                  : "text-white hover:text-gray-300"
+              }`}
+              onClick={() => router.push("/home/latest")}
+            >
+              Latest
             </DropdownItem>
           </DropdownMenu>
         </Dropdown>
@@ -195,20 +192,31 @@ const Header = () => {
         <Dropdown className="dark">
           <DropdownTrigger>
             <div className="flex items-center gap-1" role="button">
-              <div className="h-6 w-6 overflow-hidden rounded-sm md:h-9 md:w-9">
-                <img src="/images/user1.png" alt="Avatar" />
+              <div className="h-8 w-8 overflow-hidden rounded-sm md:h-10 md:w-10 xl:h-11 xl:w-11">
+                {user === 0 && <img src="/images/user1.png" alt="Avatar" />}
+                {user === 1 && <img src="/images/rose.jpg" alt="Avatar" />}
+                {user === 2 && <img src="/images/user3.png" alt="Avatar" />}
+                {user === 3 && <img src="/images/jennie.jpg" alt="Avatar" />}
               </div>
               <FaCaretDown />
             </div>
           </DropdownTrigger>
           <DropdownMenu>
-            <DropdownItem key="home" className="text-white">
+            <DropdownItem
+              key="home"
+              className="text-white"
+              onClick={() => {
+                router.push("/profiles");
+              }}
+            >
               Setting
             </DropdownItem>
-            <DropdownItem key="tvshows" className="text-white">
-              <Link href="/" className="w-full" passHref>
-                Sign Out
-              </Link>
+            <DropdownItem
+              key="tvshows"
+              className="text-white"
+              onClick={() => dispatch(logout())}
+            >
+              Sign Out
             </DropdownItem>
           </DropdownMenu>
         </Dropdown>
