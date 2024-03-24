@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Chillflix
 
-## Getting Started
+> You can visit the current version of the site [here](https://chillflix-phot.vercel.app/), deployed on Vercel.
 
-First, run the development server:
+An anime recommender website
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Background
+
+I decided to undertake this project after completing the first projects of my internship. I was excited to bring designs to life using Next.js and Tailwind CSS, as I find working with this CSS library immensely enjoyable.
+
+I searched for an impressive website design to use for this project and settled on a popular streaming platform (if you know, you know). After doing my best to replicate the landing page and login/register flow, I implemented server-side authentication. However, I ultimately didn't deploy it on the cloud, so I refocused the project primarily on frontend development.
+
+Having left this project on hold since January, I recently decided to wrap things up after discovering a cool way to implement infinite scrolling and wanting to integrate this feature.
+
+Since the server is not hosted anywhere, the register flow will not be working. However, you can still log in as guest to see the home page after logged in.
+
+## Technical choices
+
+At first, I tried my best to make every flow as close as possible to the actual site. And it was so fun using [zod](https://zod.dev/) to validate forms. It is debatable for me whether implementing by using `useState` hook would provide a better performance when validating form from a third-library. And I use [Next.js](https://nextjs.org/) and [Tailwind CSS](https://tailwindcss.com/) because I want to master them (the place I worked use these stacks).
+
+[Redux](https://redux-toolkit.js.org/) became a good friend of mine, after using it once, I'm not scared of it anymore as it is managable for a small to middle-size project. All slices are stored in the `/app/features` folder. I will try to use a newer state management tool named [Zustand](https://zustand-demo.pmnd.rs/) as I heard that it's even more convinient to use. So that I can compare them myself.
+
+For infinite scroll; thanks to this [repository](https://github.com/adrianhajdin/anime_vault) I found, to use [react-intersection-observer](https://www.npmjs.com/package/react-intersection-observer) to easily know when a referenced object is in view.
+
+The API I use to fetch animes' data is [Shikimori API](https://shikimori.one/api/doc/1.0/animes/index), which is optional. There are multiple more interesting APIs to pick like [TMDB](https://www.themoviedb.org/). But the infinite scroll I saw uses this API, so I pick this API and implemented in such ways to suit this project. Refer to [here](https://shikimori.one/api/doc/1.0/animes/index) on how the API works.
+
+## Case study
+
+I faced one interesting error while developing a plan selection with `useContext` hook. I got an error with a message of "Warning: Prop 'className' did not match. Server: ...", it happened when the server renders the component but the generated CSS is different from when it is rendered on the client side. Refer to `app/signup/components/PlanTable` folder for more context.
+
+I ended up importing the component dynamically as shown below:
+
+```
+@signup/planform/page.tsx
+
+const PlanTable = dynamic(() => import("../components/PlanTable"), {
+  ssr: false,
+  loading: () => (
+    <div className="flex min-h-[80vh] w-full items-start justify-center p-10">
+      <Spinner size="lg" />
+    </div>
+  ),
+});
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+This prevents the component to be compiled from the server side. Since it can be slow for the component to be rendered on the client side, I put `loading` to let the user knows something is loading for better UX.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+This issue reminds me to step back and try to understand the concept of how CSR (Client Side Rendering), SSR (Server Side Rendering), and hydration work. This [blog](https://javascript.plainenglish.io/what-are-hydration-csr-and-ssr-in-react-and-next-js-6520f438bd69) explains it pretty well.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Further improvement
 
-## Learn More
+- Add plan into `userSlice` to allow user to change plan and make plan relevant as a feature.
+- Allow users to change their avatar by adding extra context to `userSlice`.
+- Finishing the server. Refer to old server repository [here](https://github.com/photkosee/chillflix-server).
+- Allow users to add favorite animes to their lists by adding extra context to `userSlice`.
+- Implement search feature, you can query the search phase to filter animes to the API (I might implement this myself when I have time).
+- Implement dynamic routes/pages for each anime when users click on a card. The [Shikimori API](https://shikimori.one/api/doc/1.0/animes/index) is sufficient to do so.
 
-To learn more about Next.js, take a look at the following resources:
+## Contributing
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Pull requests are welcome. Please open an issue first to discuss what'd like to improve. All ideas from the [Further improvement](#futher-improvement) section are ready to be implemented if you are interested to contribute.

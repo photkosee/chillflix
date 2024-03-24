@@ -8,7 +8,7 @@ import ToastifyContainer from "@/components/ToastifyContainer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Chillflix - Watch TV Show Online, Watch Movies Online",
+  title: "Chillflix - Anime Recommender",
   description: "Streaming Platform by Phot Koseekrainiramon",
 };
 

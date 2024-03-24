@@ -38,7 +38,7 @@ const Page = () => {
                 "
               >
                 <img
-                  src="/images/user1.png"
+                  src="/images/lisa.jpg"
                   alt="Profile"
                   className="h-full w-full object-cover"
                 />
@@ -95,7 +95,7 @@ const Page = () => {
                 "
               >
                 <img
-                  src="/images/user3.png"
+                  src="/images/jisoo.jpg"
                   alt="Profile"
                   className="h-full w-full object-cover"
                 />
