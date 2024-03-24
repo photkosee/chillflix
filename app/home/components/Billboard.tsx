@@ -1,10 +1,5 @@
-import { getGenres } from "@/app/store";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-
 const Billboard = () => {
-  const dispatch = useDispatch();
-
   // useEffect(() => {
   //   dispatch(getGenres());
   // }, [dispatch]);

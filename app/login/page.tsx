@@ -184,18 +184,20 @@ const Page = () => {
               </button>
             </form>
 
-            <button
-              className="flex h-[53px] w-full items-center justify-center rounded-sm
-              bg-primary text-white hover:bg-primary/90
-              "
-              disabled={loading}
-            >
-              {loading ? (
-                <CircularProgress color="default" aria-label="Loading..." />
-              ) : (
-                "Sign in as guest"
-              )}
-            </button>
+            <Link href="/home" className="w-full" passHref>
+              <button
+                className="flex h-[53px] w-full items-center justify-center rounded-sm
+                bg-primary text-white hover:bg-primary/90
+                "
+                disabled={loading}
+              >
+                {loading ? (
+                  <CircularProgress color="default" aria-label="Loading..." />
+                ) : (
+                  "Sign in as guest"
+                )}
+              </button>
+            </Link>
 
             <div className="flex w-full flex-col justify-start gap-3">
               <div className="text-gray-400/60">

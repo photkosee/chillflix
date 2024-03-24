@@ -2,10 +2,10 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import { FaCaretDown } from "react-icons/fa";
 import { Bell, Search } from "lucide-react";
-
 import {
   Dropdown,
   DropdownTrigger,
@@ -13,10 +13,16 @@ import {
   DropdownItem,
 } from "@nextui-org/react";
 
+import { RootState } from "@/app/store";
+import { setGenre } from "@/app/features/genres/genreSlice";
+import { usePathname } from "next/navigation";
+
 const Header = () => {
   const [openSearch, setOpenSearch] = useState<boolean>(false);
   const [isSticky, setIsSticky] = useState<boolean>(false);
   const stickyDivRef = useRef<HTMLDivElement>(null);
+  const dispatch = useDispatch();
+  const pathname = usePathname();
 
   const handleScroll = () => {
     stickyDivRef.current &&
@@ -36,32 +42,58 @@ const Header = () => {
       fixed z-30 flex w-full items-center justify-between px-4 py-5
       transition duration-300 md:px-10 ${
         isSticky ? "bg-zinc-900/80" : "bg-transparent"
-      }
-      `}
+      }`}
       ref={stickyDivRef}
     >
       <div className="flex gap-3 md:gap-7 lg:gap-12">
-        <img
-          src="/images/logo.png"
-          alt="ChillFlix logo"
-          className="w-[80px] md:w-[120px]"
-        />
+        <Link href="/" passHref>
+          <img
+            src="/images/logo.png"
+            alt="ChillFlix logo"
+            className="w-[80px] md:w-[120px]"
+          />
+        </Link>
 
         <div className="hidden items-center gap-7 text-white lg:flex">
-          <Link href="/" className="transition hover:text-gray-300">
+          <Link
+            href="/home"
+            className={`transition ${
+              pathname === "/home" ? "text-red-500" : "hover:text-gray-300"
+            }`}
+            onClick={() => dispatch(setGenre("ALL"))}
+          >
             Home
           </Link>
-          <Link href="/" className="transition hover:text-gray-300">
+          <Link
+            href="/home/tv"
+            className={`transition ${
+              pathname === "/home/tv" ? "text-red-500" : "hover:text-gray-300"
+            }`}
+            onClick={() => dispatch(setGenre("TV"))}
+          >
             TV Shows
           </Link>
-          <Link href="/" className="transition hover:text-gray-300">
+          <Link
+            href="/home/movie"
+            className={`transition ${
+              pathname === "/home/movie"
+                ? "text-red-500"
+                : "hover:text-gray-300"
+            }`}
+            onClick={() => dispatch(setGenre("MOVIE"))}
+          >
             Movies
           </Link>
-          <Link href="/" className="transition hover:text-gray-300">
+          <Link
+            href="/home/latest"
+            className={`transition ${
+              pathname === "/home/latest"
+                ? "text-red-500"
+                : "hover:text-gray-300"
+            }`}
+            onClick={() => dispatch(setGenre("LATEST"))}
+          >
             Latest
-          </Link>
-          <Link href="/" className="transition hover:text-gray-300">
-            My List
           </Link>
         </div>
 
@@ -80,16 +112,54 @@ const Header = () => {
           </DropdownTrigger>
           <DropdownMenu>
             <DropdownItem key="home" className="text-white">
-              Home
+              <Link
+                href="/home"
+                className={`transition ${
+                  pathname === "/home" ? "text-red-500" : "hover:text-gray-300"
+                }`}
+                onClick={() => dispatch(setGenre("ALL"))}
+              >
+                Home
+              </Link>
             </DropdownItem>
             <DropdownItem key="tvshows" className="text-white">
-              TV Shows
+              <Link
+                href="/home/tv"
+                className={`transition ${
+                  pathname === "/home/tv"
+                    ? "text-red-500"
+                    : "hover:text-gray-300"
+                }`}
+                onClick={() => dispatch(setGenre("TV"))}
+              >
+                TV Shows
+              </Link>
             </DropdownItem>
             <DropdownItem key="movies" className="text-white">
-              Movies
+              <Link
+                href="/home/movie"
+                className={`transition ${
+                  pathname === "/home/movie"
+                    ? "text-red-500"
+                    : "hover:text-gray-300"
+                }`}
+                onClick={() => dispatch(setGenre("MOVIE"))}
+              >
+                Movies
+              </Link>
             </DropdownItem>
-            <DropdownItem key="mylist" className="text-white">
-              My List
+            <DropdownItem key="movies" className="text-white">
+              <Link
+                href="/home/latest"
+                className={`transition ${
+                  pathname === "/home/latest"
+                    ? "text-red-500"
+                    : "hover:text-gray-300"
+                }`}
+                onClick={() => dispatch(setGenre("LATEST"))}
+              >
+                Latest
+              </Link>
             </DropdownItem>
           </DropdownMenu>
         </Dropdown>
@@ -136,7 +206,9 @@ const Header = () => {
               Setting
             </DropdownItem>
             <DropdownItem key="tvshows" className="text-white">
-              Sign Out
+              <Link href="/" className="w-full" passHref>
+                Sign Out
+              </Link>
             </DropdownItem>
           </DropdownMenu>
         </Dropdown>

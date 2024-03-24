@@ -8,7 +8,7 @@ export default function RootLayout({
   return (
     <>
       <Header />
-      <main className="h-full w-full bg-blue-500">{children}</main>
+      <main className="h-full w-full">{children}</main>
     </>
   );
 }
