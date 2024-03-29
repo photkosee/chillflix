@@ -2,7 +2,11 @@
 
 > You can visit the current version of the site [here](https://chillflix-phot.vercel.app/), deployed on Vercel.
 
-An anime recommender website
+An anime recommendation website with a theme inspired by a popular streaming platform
+
+### Log
+
+- 29/03/2024: Implemented dynamic routes for each anime
 
 ## Background
 
@@ -22,7 +26,7 @@ At first, I tried my best to make every flow as close as possible to the actual 
 
 For infinite scroll; thanks to this [repository](https://github.com/adrianhajdin/anime_vault) I found, to use [react-intersection-observer](https://www.npmjs.com/package/react-intersection-observer) to easily know when a referenced object is in view.
 
-The API I use to fetch animes' data is [Shikimori API](https://shikimori.one/api/doc/1.0/animes/index), which is optional. There are multiple more interesting APIs to pick like [TMDB](https://www.themoviedb.org/). But the infinite scroll I saw uses this API, so I pick this API and implemented in such ways to suit this project. Refer to [here](https://shikimori.one/api/doc/1.0/animes/index) on how the API works.
+The API I use to fetch animes' data is [Shikimori API](https://shikimori.one/api/doc/1.0/animes), which is optional. There are multiple more interesting APIs to pick like [TMDB](https://www.themoviedb.org/). But the infinite scroll I saw uses this API, so I pick this API and implemented in such ways to suit this project. Refer to [here](https://shikimori.one/api/doc/1.0/animes/index) on how the API works.
 
 ## Case study
 
@@ -54,7 +58,7 @@ This issue reminds me to step back and try to understand the concept of how CSR 
 - Finishing the server. Refer to old server repository [here](https://github.com/photkosee/chillflix-server).
 - Allow users to add favorite animes to their lists by adding extra context to `userSlice`.
 - Implement search feature, you can query the search phase to filter animes to the API (I might implement this myself when I have time).
-- Implement dynamic routes/pages for each anime when users click on a card. The [Shikimori API](https://shikimori.one/api/doc/1.0/animes/index) is sufficient to do so.
+- <s>Implement dynamic routes/pages for each anime when users click on a card. The [Shikimori API](https://shikimori.one/api/doc/1.0/animes/show) is sufficient to do so.</s> Completed
 
 ## Contributing
 

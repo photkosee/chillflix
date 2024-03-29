@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 import { PiStarFill } from "react-icons/pi";
 
@@ -53,7 +54,10 @@ interface AnimeCardProps {
 
 const AnimeCard = ({ anime }: AnimeCardProps) => {
   return (
-    <div className="relative h-[335px] w-[230px] max-w-sm rounded">
+    <Link
+      className="relative h-[335px] w-[230px] max-w-sm rounded"
+      href={`/home/${anime.id}`}
+    >
       <div className="relative h-full w-full rounded-lg bg-black/50 text-white">
         <Image
           src={`https://shikimori.one${anime.image.original}`}
@@ -77,7 +81,7 @@ const AnimeCard = ({ anime }: AnimeCardProps) => {
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

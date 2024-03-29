@@ -1,9 +1,17 @@
 "use server";
 
 import AnimeCard, { AnimeProps } from "./components/AnimeCard";
+import AnimePage from "./components/AnimePage";
 
 const MAX_LIMIT = 12;
 const BASE_URL = "https://shikimori.one/api";
+
+const getAnime = async (id: string) => {
+  const response = await fetch(`${BASE_URL}/animes/${id}`);
+  const data = await response.json();
+
+  return <AnimePage anime={data} index={0} />;
+};
 
 const fetchTV = async (page: number) => {
   const response = await fetch(
@@ -53,4 +61,4 @@ const fetchAll = async (page: number) => {
   ));
 };
 
-export { fetchTV, fetchMovie, fetchLatest, fetchAll };
+export { getAnime, fetchTV, fetchMovie, fetchLatest, fetchAll };
