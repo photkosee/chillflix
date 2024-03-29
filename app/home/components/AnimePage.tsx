@@ -110,7 +110,8 @@ const AnimePage = ({ anime }: AnimePageProps) => {
         <p className="text-md w-full text-white">Kind: {anime.kind}</p>
         <p className="text-md w-full text-white">Episodes: {anime.episodes}</p>
         <p className="text-md w-full text-white">
-          Franchise: {anime.franchise}
+          Franchise:{" "}
+          {anime.franchise ? anime.franchise.replace(/_/g, " ") : "None"}
         </p>
         <p className="text-md w-full text-white">
           {anime.ongoing ? "Ongoing" : "Completed"}
