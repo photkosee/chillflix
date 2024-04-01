@@ -1,5 +1,7 @@
 <p align="center">
-  <img width="270" src="./public/images/logo.png">
+  <a href="https://chillflix-phot.vercel.app/">
+    <img width="270" src="./public/images/logo.png">
+  </a>
 </p>
 <p align="center">An anime recommendation website with a theme inspired by a popular streaming platform. <a href="https://chillflix-phot.vercel.app/">Try it out now!</a></p>
 
