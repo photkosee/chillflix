@@ -64,6 +64,8 @@ const AnimeCard = ({ anime }: AnimeCardProps) => {
           alt={anime.name}
           loading="lazy"
           fill
+          sizes="100%"
+          placeholder="empty"
           className="rounded-lg object-contain"
         />
         <div

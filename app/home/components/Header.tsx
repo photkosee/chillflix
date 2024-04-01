@@ -163,22 +163,11 @@ const Header = () => {
           </Dropdown>
         </div>
 
-        <div className="flex items-center gap-7 text-white">
-          <div className="hidden items-center gap-3 sm:flex">
-            <div className="relative flex h-9 w-[180px] justify-end lg:w-[230px]">
-              <input
-                className={`h-full rounded-3xl py-1.5 pl-4 pr-10 ${
-                  openSearch ? "w-full bg-neutral-800" : "w-0 bg-transparent"
-                } duration-500`}
-                disabled={!openSearch}
-                placeholder="Search by name"
-              />
-              <Search
-                className="absolute right-0 top-1/2 h-4 -translate-x-1/2 -translate-y-1/2 transform lg:h-5"
-                role="button"
-                onClick={() => setOpenSearch(!openSearch)}
-              />
-            </div>
+        <div className="flex items-center gap-5 text-white">
+          <div className="flex items-center gap-3">
+            <button className="p-1" onClick={() => router.push(`/home/search`)}>
+              <Search className="h-4 lg:h-5" />
+            </button>
             <Dropdown className="dark">
               <DropdownTrigger>
                 <Bell className="h-4 lg:h-5" role="button" />

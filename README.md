@@ -6,6 +6,7 @@
 ### Log
 
 - 29/03/2024: Implemented dynamic routes for each anime
+- 02/04/2024: Implemented seach feature with debounce custom hook
 
 ## Background
 
@@ -56,7 +57,7 @@ This issue reminds me to step back and try to understand the concept of how CSR 
 - Allow users to change their avatar by adding extra context to `userSlice`.
 - Finishing the server. Refer to old server repository [here](https://github.com/photkosee/chillflix-server).
 - Allow users to add favorite animes to their lists by adding extra context to `userSlice`.
-- Implement search feature, you can query the search phase to filter animes to the API (I might implement this myself when I have time).
+- <s>Implement search feature, you can query the search phase to filter animes to the API (I might implement this myself when I have time).</s> Completed
 - <s>Implement dynamic routes/pages for each anime when users click on a card. The [Shikimori API](https://shikimori.one/api/doc/1.0/animes/show) is sufficient to do so.</s> Completed
 
 ## Contributing
