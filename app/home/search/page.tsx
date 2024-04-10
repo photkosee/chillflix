@@ -4,12 +4,28 @@ import { Suspense, useEffect, useState } from "react";
 
 import { Input, CircularProgress } from "@nextui-org/react";
 
-import { searchAnime } from "../action";
+import AnimeCard, { AnimeProps } from "../components/AnimeCard";
 
 const Anime = async ({ query }: { query: string }) => {
-  let data = await searchAnime(query);
+  const response = await fetch(
+    `https://shikimori.one/api/animes?search=${query}&limit=12&order=popularity`,
+  );
+  const data = await response.json();
 
-  return data;
+  if (data.length === 0) {
+    return <div className="text-white">0 search results found</div>;
+  }
+
+  return (
+    <section
+      className="grid max-w-7xl grid-cols-1 gap-x-7 gap-y-3 px-10
+      md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+    >
+      {data.map((anime: AnimeProps, index: number) => (
+        <AnimeCard key={anime.id} anime={anime} index={index} />
+      ))}
+    </section>
+  );
 };
 
 const Page = () => {
@@ -19,7 +35,7 @@ const Page = () => {
   useEffect(() => {
     const delayDebounce = setTimeout(() => {
       setSearch(query);
-    }, 500);
+    }, 750);
 
     return () => clearTimeout(delayDebounce);
   }, [query, setSearch]);

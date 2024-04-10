@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { setUser } from "../features/users/userSlice";
 import { RootState } from "../store";
+import { Image } from "@nextui-org/react";
 
 const Page = () => {
   const dispatch = useDispatch();
@@ -34,18 +35,21 @@ const Page = () => {
               <div
                 className="
                 flex h-40 w-40 items-center justify-center overflow-hidden
-                rounded-md border-2 border-transparent group-hover:border-white
+                rounded-xl border-2 border-transparent group-hover:border-white
                 "
               >
-                <img
+                <Image
                   src="/images/lisa.jpg"
-                  alt="Profile"
+                  alt="user1"
+                  width={160}
+                  height={160}
+                  radius="md"
                   className="h-full w-full object-cover"
                 />
               </div>
               <div
                 className="
-                mt-2 text-center text-lg text-gray-400
+                mt-2 text-center text-xl text-gray-400
                 group-hover:cursor-pointer group-hover:text-white
                 "
               >
@@ -63,18 +67,21 @@ const Page = () => {
               <div
                 className="
                 flex h-40 w-40 items-center justify-center overflow-hidden
-                rounded-md border-2 border-transparent group-hover:border-white
+                rounded-xl border-2 border-transparent group-hover:border-white
                 "
               >
-                <img
+                <Image
                   src="/images/rose.jpg"
-                  alt="Profile"
+                  alt="user2"
+                  width={160}
+                  height={160}
+                  radius="md"
                   className="h-full w-full object-cover"
                 />
               </div>
               <div
                 className="
-                mt-2 text-center text-lg text-gray-400  group-hover:text-white
+                mt-2 text-center text-xl text-gray-400  group-hover:text-white
                 "
               >
                 User2
@@ -91,18 +98,21 @@ const Page = () => {
               <div
                 className="
                 flex h-40 w-40 items-center justify-center overflow-hidden
-                rounded-md border-2 border-transparent group-hover:border-white
+                rounded-xl border-2 border-transparent group-hover:border-white
                 "
               >
-                <img
+                <Image
                   src="/images/jisoo.jpg"
-                  alt="Profile"
+                  alt="user3"
+                  width={160}
+                  height={160}
+                  radius="md"
                   className="h-full w-full object-cover"
                 />
               </div>
               <div
                 className="
-                mt-2 text-center text-lg text-gray-400 group-hover:text-white
+                mt-2 text-center text-xl text-gray-400 group-hover:text-white
                 "
               >
                 User3
@@ -119,18 +129,21 @@ const Page = () => {
               <div
                 className="
                 flex h-40 w-40 items-center justify-center overflow-hidden
-                rounded-md border-2 border-transparent group-hover:border-white
+                rounded-xl border-2 border-transparent group-hover:border-white
                 "
               >
-                <img
+                <Image
                   src="/images/jennie.jpg"
-                  alt="Profile"
+                  alt="user4"
+                  width={160}
+                  height={160}
+                  radius="md"
                   className="h-full w-full object-cover"
                 />
               </div>
               <div
                 className="
-                mt-2 text-center text-lg text-gray-400 group-hover:text-white
+                mt-2 text-center text-xl text-gray-400 group-hover:text-white
                 "
               >
                 User4

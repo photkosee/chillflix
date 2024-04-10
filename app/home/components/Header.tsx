@@ -199,7 +199,7 @@ const Header = () => {
                   router.push("/profiles");
                 }}
               >
-                Setting
+                Switch User
               </DropdownItem>
               <DropdownItem
                 key="tvshows"
