@@ -9,7 +9,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Chillflix - Anime Recommender",
-  description: "Streaming Platform by Phot Koseekrainiramon",
+  description: "An Anime Recommender website",
 };
 
 export default function RootLayout({
@@ -20,10 +20,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <meta
-          name="description"
-          content="An Anime Recommender website built with Next.js"
-        />
         <link rel="author" href="https://github.com/photkosee" />
         <meta name="author" content="Phot Koseekrainiramon" />
         <meta name="creator" content="Phot Koseekrainiramon" />

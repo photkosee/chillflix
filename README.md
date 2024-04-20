@@ -20,6 +20,27 @@ Having left this project on hold since January, I recently decided to wrap thing
 
 Since the server is not hosted anywhere, the register flow will not be working. However, you can still log in as guest to see the home page after logged in.
 
+## Features
+
+- Registering flow (server is not available)
+- Normal/guest login
+- Multiple users
+- Dynamic routes for each anime
+- Fetching anime by genres
+- Searching anime by name
+
+## Built with
+
+- [Next.js 14](https://nextjs.org/) - Development environment
+- [Tailwind CSS](https://tailwindcss.com/) - CSS framework
+- [Next UI](https://nextui.org/) - Components library for User Interface
+- [Redux Toolkit](https://redux-toolkit.js.org/) - State management tool
+- [Zod](https://zod.dev/) - Form validation
+
+## Data Source
+
+- [Shikimori API](https://shikimori.one/api/doc/1.0/animes) - Fetching anime data
+
 ## Technical choices
 
 At first, I tried my best to make every flow as close as possible to the actual site. And it was so fun using [zod](https://zod.dev/) to validate forms. It is debatable for me whether implementing by using `useState` hook would provide a better performance when validating form from a third-library. And I use [Next.js](https://nextjs.org/) and [Tailwind CSS](https://tailwindcss.com/) because I want to master them (the place I worked use these stacks).
