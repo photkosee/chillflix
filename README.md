@@ -83,6 +83,11 @@ This issue reminds me to step back and try to understand the concept of how CSR 
 - <s>Implement search feature, you can query the search phase to filter animes to the API (I might implement this myself when I have time).</s> Completed
 - <s>Implement dynamic routes/pages for each anime when users click on a card. The [Shikimori API](https://shikimori.one/api/doc/1.0/animes/show) is sufficient to do so.</s> Completed
 
+## Author
+Phot Koseekrainiramon
+- [LinkedIn](https://www.linkedin.com/in/phot-kosee/)
+- [GitHub](https://github.com/photkosee)
+
 ## Contributing
 
 Pull requests are welcome. Please open an issue first to discuss what'd like to improve. All ideas from the [Further improvement](#futher-improvement) section are ready to be implemented if you are interested to contribute.
