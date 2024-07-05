@@ -15,7 +15,7 @@
 5. [Data Source](#data-source)
 6. [Technical Choices](#technical-choices)
 7. [Case Study](#case-study)
-8. [Further Improvements](#further-Improvement)
+8. [Further Improvements](#further-improvements)
 9. [Author](#author)
 10. [Deployment](#deployment)
 11. [Contributing](#contributing)
