@@ -1,24 +1,21 @@
-<p align="center">
-  <a href="https://chillflix-phot.vercel.app/">
-    <img width="270" src="./public/images/logo.png">
-  </a>
-</p>
+# <p align="center"><a href="https://chillflix-phot.vercel.app/"><img width="230" src="./public/images/logo.png"></a></p>
+
 <p align="center">An anime recommendation website with a theme inspired by a popular streaming platform. <a href="https://chillflix-phot.vercel.app/">Try it out now!</a></p>
 
 
-### Table of Contents
+## Table of Contents
 
-1. [Inspiration](#inspiration)
-2. [What this does?](#what-this-does)
-3. [Features](#features)
-4. [Built with](#built-with)
-5. [Data Source](#data-source)
-6. [Technical Choices](#technical-choices)
-7. [Case Study](#case-study)
-8. [Further Improvements](#further-improvements)
-9. [Author](#author)
-10. [Deployment](#deployment)
-11. [Contributing](#contributing)
+- [Inspiration](#inspiration)
+- [What this does?](#what-this-does)
+- [Features](#features)
+- [Built with](#built-with)
+- [Data Source](#data-source)
+- [Technical Choices](#technical-choices)
+- [Case Study](#case-study)
+- [Further Improvements](#further-improvements)
+- [Author](#author)
+- [Deployment](#deployment)
+- [Contributing](#contributing)
 
 
 ## Inspiration
@@ -101,7 +98,7 @@ This issue reminds me to step back and try to understand the concept of how CSR 
 ## Author
 
 Phot Koseekrainiramon
-- [LinkedIn](https://www.linkedin.com/in/phot-kosee/)
+- [LinkedIn](https://www.linkedin.com/in/photkosee/)
 - [GitHub](https://github.com/photkosee)
 
 ## Deployment
